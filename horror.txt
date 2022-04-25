@@ -1747,7 +1747,7 @@ légitime », entendez-vous avant de sombrer dans le néant.
 
 [49]
 {
-    Vous avez beau lutter de toutes vos forces, vous avez beau utiliser tout essayer, les
+Vous avez beau lutter de toutes vos forces, vous avez beau utiliser tout essayer, les
 créatures continuent d’avancer vers vous, lentement, inexorablement. Vos efforts ne semblent
 avoir d’autres effets que vous épuiser. Déjà, les doigts putréfiés de l’abomination la plus
 proches se referment comme des mâchoires d’acier sur votre gorge. Impossible d’échapper à
