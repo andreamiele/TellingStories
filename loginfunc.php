@@ -1,8 +1,8 @@
 <?php
-function logged($bdd)
+function logged($BDD)
 {
     $Requete="'SELECT COUNT(*) as nb FROM user WHERE login=".$_SESSION['login']." AND password=".$_SESSION['password'];
-    $response = $bdd->prepare($Requete);
+    $response = $BDD->prepare($Requete);
     $_SESSION=$response->fetch();
     if($_SESSION['nb']==1)
     {
@@ -10,10 +10,10 @@ function logged($bdd)
     }
     return false;
 }
-function logged_admin($bdd)
+function logged_admin($BDD)
 {
     $Requete="'SELECT COUNT(*) as nb FROM user WHERE login=".$_SESSION['login']."' AND password=".$_SESSION['password']."'AND admin=true";
-    $response = $bdd->prepare($Requete);
+    $response = $BDD->prepare($Requete);
     $_SESSION=$response->fetch();
     if($_SESSION['nb']==1)
     {

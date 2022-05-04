@@ -10,7 +10,7 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['password']))
 else
 {
     $Requete="'SELECT COUNT(*) as nb FROM user WHERE login=".$_SESSION['login']." AND password=".$_SESSION['password'];
-    $response = $bdd->prepare($Requete);
+    $response = $BDD->prepare($Requete);
     $_SESSION[$nb]=$response->fetch();
     if($_SESSION['nb']==1)
     {
