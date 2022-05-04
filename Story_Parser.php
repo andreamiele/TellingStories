@@ -44,19 +44,21 @@
                 if ($line . substr(0, 6) == 'Titre: ') {
                     $Title = $line;
                     substr(7, count_chars($line) - 7);
-                } else if ($line == '(') {
+                } else if($line . substr(0, 7) == 'Auteur: ') {
+                    $Author = $line;
+                    substr(8, count_chars($line) - 8);
+                }  else if ($line[0] == '[') {
+                    $NumPara = $line[1];
+                }else if ($line == '(') {
+                    $Audio[$NumPara] ='';
                     while ($line = fgets($txt_file) && $line!=')') {
                         $Audio[$NumPara] += $line;
                     }
                 } else if ($line == '*') {
+                    $Image[$NumPara]='';
                     while ($line = fgets($txt_file) && $line!='*') {
                         $Image[$NumPara] += $line;
                     }
-                } else if($line . substr(0, 7) == 'Auteur: ') {
-                    $Author = $line;
-                    substr(8, count_chars($line) - 8);
-                } else if ($line[0] == '[') {
-                    $NumPara = $line[1];
                 } else if ($line == '{') {
                     $Para[$NumPara] = '';
                     while ($line = fgets($txt_file) && $line != '/' && $line != '}') {
@@ -69,6 +71,10 @@
                     }
                 } else if ($line[0] == '$') {
                     while ($line = fgets($txt_file) && $line[0] == '$') {
+                        if(!isset($State[$NumPara]))
+                        {
+                            $State[$NumPara] = ''; 
+                        }
                         $State[$NumPara] += $line;
                     }
                 }
