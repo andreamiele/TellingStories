@@ -11,8 +11,8 @@ else
 {
     $Requete="'SELECT COUNT(*) as nb FROM user WHERE login=".$_SESSION['login']." AND password=".$_SESSION['password'];
     $response = $bdd->prepare($Requete);
-    $_SESSION=$response->fetch();
-    if($login['nb']==1)
+    $_SESSION[$nb]=$response->fetch();
+    if($_SESSION['nb']==1)
     {
     ?>
     <h2 class="text-center">Vous êtes connecté <?=$_SESSION['login']?> !</h2>
