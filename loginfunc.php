@@ -8,6 +8,17 @@ function logged($bdd)
     {
      return true;
     }
+    return false;
 }
-
+function logged_admin($bdd)
+{
+    $Requete="'SELECT COUNT(*) as nb FROM user WHERE login=".$_SESSION['login']."' AND password=".$_SESSION['password']."'AND admin=true";
+    $response = $bdd->prepare($Requete);
+    $_SESSION=$response->fetch();
+    if($_SESSION['nb']==1)
+    {
+     return true;
+    }
+    return false;
+}
 ?>
