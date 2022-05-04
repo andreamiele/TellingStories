@@ -83,8 +83,7 @@ a{
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    padding-right: 1%;
-    padding-left: 1%;
+
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -122,7 +121,7 @@ a{
 }
 .accueilsection {
     position: relative;
-    padding: 1% 5%;
+    width:100%;
     border-radius: 10px;
 }
 
@@ -170,13 +169,17 @@ a{
 * {
     box-sizing: border-box;
 }
-
 .container {
     display: flex;
-    width: 1040px;
+    width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.footer{
+    padding-bottom:20px;
+}
+
 .card {
     margin: 10px;
     background: rgba( 255, 255, 255, 0.35 );
@@ -278,36 +281,41 @@ h3{
 .test1{
     transform: translateX(-50vw) rotate(-10deg);
     z-index: 1;
-    width:3000px
+    width:5000px;
+    margin-bottom:20px;
 }
 .test1-1{
     transform: translateX(-50vw) rotate(15deg);
     z-index: 2;
-    width:3000px;
+    width:5000px;
     margin-top:50px;
+    margin-bottom:20px;
 }
 .test1-2{
     transform: translateX(-50vw) rotate(0deg);
     z-index: 3;
-    width:3000px;
+    width:5000px;
     margin-top:20px;
+    margin-bottom:20px;
 }
 .test1-3{
     transform: translateX(-40vw) rotate(5deg);
     z-index: 3;
-    width:3000px;
+    width:5000px;
     margin-top:20px;
+    margin-bottom:20px;
 }
 .test1-4{
     transform: translateX(-10vw) rotate(20deg);
     z-index: 3;
-    width:3000px;
-    margin-top:20px;
+    width:5000px;
+    margin-top: 200px;
+    margin-bottom:20px;
 }
 .test1-5{
     transform: translateX(100vw) rotate(-20deg);
     z-index: 2;
-    width:3000px;
+    width:5000px;
     margin-top:10px;
 }
 
@@ -371,6 +379,13 @@ h3{
     position: relative;
     padding: 1% 5%;
     border-radius: 10px;
+
+}
+.accueilsection2 {
+    position: relative;
+    padding: 1% 5%;
+    border-radius: 10px;
+    margin-top:50vh;
 }
 
 .headingcontact {
@@ -673,9 +688,45 @@ button, input, optgroup, select, textarea {
 
 
 
+.swiper {
+
+    height: 100%;
+    margin:0;
+    width:100%;
+}
+
+.swiper-wrapper{
+    height : 100%;
+}
+
+.textwrapper2 {
+    display: inline-block;
+    overflow: hidden;
+    height: 1.1em;
+    margin: 20px 15px 15px;
+    line-height: 0em;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: 600;
+}
+.white2{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    -webkit-backdrop-filter: blur( 3px );
 
 
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    z-index:10;
 
+}
+.white{
+    background-color: white;
+    z-index:10;
+}
+.up{
+    z-index:10;
+}
 
 
 
