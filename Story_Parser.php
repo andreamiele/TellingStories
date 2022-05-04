@@ -52,30 +52,47 @@
                 }else if ($line == '(') {
                     $Audio[$NumPara] ='';
                     while ($line = fgets($txt_file) && $line!=')') {
-                        $Audio[$NumPara] += $line;
+                        $Audio[$NumPara] .= $line;
                     }
                 } else if ($line == '*') {
                     $Image[$NumPara]='';
                     while ($line = fgets($txt_file) && $line!='*') {
-                        $Image[$NumPara] += $line;
+                        $Image[$NumPara] .= $line;
                     }
                 } else if ($line == '{') {
                     $Para[$NumPara] = '';
                     while ($line = fgets($txt_file) && $line != '/' && $line != '}') {
-                        $Para[$NumPara] += $line;
+                        $Para[$NumPara] .= $line;
                     }
                 } else if ($line == '/') {
                     $State[$NumPara] = '';
                     while ($line = fgets($txt_file) && $line != '/') {
-                        $State[$NumPara] += $line;
+                        $State[$NumPara] .= $line;
                     }
                 } else if ($line[0] == '$') {
-                    while ($line = fgets($txt_file) && $line[0] == '$') {
-                        if(!isset($State[$NumPara]))
+                    while ($line = fgets($txt_file)) {
+                        if(is_string($line))
                         {
-                            $State[$NumPara] = ''; 
+                            if($line[0] == '$')
+                            {
+                                if(!isset($State[$NumPara]))
+                                {
+                                    $State[$NumPara] = ''; 
+                                }
+                                if(is_string($line))
+                                {
+                                    $State[$NumPara] .= $line;
+                                }
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
-                        $State[$NumPara] += $line;
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
             }
