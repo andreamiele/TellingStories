@@ -1,5 +1,5 @@
 <?php include("entete.php") ?>
-
+<?php include("nav.php") ?>
 
 <div class="conteneurpage" data-scroll-section>
     <div class="emballage">
@@ -339,4 +339,10 @@
         <div>
             Ceci est la fin du site.
         </div>
-        <?php include("footer.php") ?>
+    </div>
+</div>
+
+
+
+
+<?php include("footer.php") ?>

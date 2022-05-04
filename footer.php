@@ -1,11 +1,4 @@
-
-
-
-            </div>
-        </div>
-    </div>
 </div>
-
 <script src="locomotive-scroll.min.js"></script>
 
 <script src="js.js"></script>
@@ -17,6 +10,20 @@
     document.addEventListener('lazyloaded', function(){
         scroll.update()
     });
+
+
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click",addField);
+
+
+    function addField()
+    {
+        var div1=document.getElementById("parag");
+        div1.innerHTML+='<div class="headingline2" ></div><div class="field padding-bottom--24"> <label for="action">Action</label> <input type="text" id="action" /> </div> <div class="field padding-bottom--24"> <label for="nbaction">Numero du paragraphe</label> <input type="text" id="nbaction" /> </div>';
+
+
+        scroll.update();
+    }
 </script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
