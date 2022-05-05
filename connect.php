@@ -16,7 +16,7 @@ function logged($BDD)
 }
 function logged_admin($BDD)
 {
-    $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=0";
+    $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=1";
     $response = $BDD->prepare($Requete);
     $response->execute(array(
         "LOGIN" => $_SESSION['login'],
