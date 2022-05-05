@@ -1,3 +1,6 @@
+<?php session_start();
+include('connect.php');
+?>
 <div class="white">
     <div class="containeurnav white">
         <div class="rang-nav white2">
@@ -31,7 +34,19 @@
             </nav>
 
             <div class="button w-inline-block">
-                <a class="up">Se connecter</a>
+                <?php
+                if(logged($BDD))
+                {?>
+                    <a href="profil.php" class="up"><?=$_SESSION['login']?></a>
+                <?php
+                }
+                else
+                {
+                ?>
+                <a href="login.html" class="up">Se connecter</a>
+                <?php
+                }
+                ?>
             </div>
         </div> <!-- rang nav -->
     </div> <!-- containeurnav -->
