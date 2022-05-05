@@ -37,35 +37,50 @@
                                     <div class="headingline" data-scroll data-scroll-speed="1"></div>
                                     <h2 data-scroll data-scroll-speed="1">Histoires commencées</h2>
                                 </div>
-                                
                                 <div class="container swiper" >
                                 <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
-                                    <?php ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                TITRE
-                                            </h3>
-                                        </div>
-                                        <div class="card-header">
-                                            <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-                                        </div>
-                                        <div class="card-body">
-                                            <p>
-                                                An exploration into the truck's polarising design
-                                            </p>
-                                            <span class="tag tag-teal">Voyage</span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
+                                    <?php
+                                    $Requete="SELECT S_ID FROM advancement WHERE User_iD=(SELECT User_iD FROM users WHERE login=:LOGIN )";
+                                    $response = $BDD->prepare($Requete);
+                                    $response->execute(array("LOGIN"=>$_SESSION['login']));
+                                    $readStories=$response->fetch();
+                                    foreach($readStories as $numbers)
+                                    {
+                                        $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
+                                        $response = $BDD->prepare($Requete);
+                                        $response->execute(array("NUMBERS"=>$numbers));
+                                    }
+                                        while($readStoryInfo=$response->fetch())
+                                        {
+                                    ?>
+                                            <div class="card swiper-slide" >
+                                                <div class="card-body-due">
+                                                    <h3>
+                                                        <?=$readStoryInfo['title']?>
+                                                    </h3>
+                                                </div>
+                                                <div class="card-header">
+                                                    <img src="<?=$readStoryInfo['picture']?>" alt="<?=$readStoryInfo['tag']?>" />
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>
+                                                        <?=$readStoryInfo['desc']?>
+                                                    </p>
+                                                    <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
+                                                    <!--
+                                                    <div class="user">
+                                                        <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                                        <div class="user-info">
+                                                            <h5>July Dec</h5>
+                                                            <small>2h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    -->
                                                 </div>
                                             </div>
-                                            -->
-                                        </div>
-                                    </div>
+                                        <?php
+                                        }
+                                        ?>
 
                                 </div>
                                     <!-- If we need navigation buttons -->
@@ -90,85 +105,48 @@
 
                             <div class="container swiper" >
                                 <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
-
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                TITRE
-                                            </h3>
-                                        </div>
-                                        <div class="card-header">
-                                            <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-                                        </div>
-                                        <div class="card-body">
-                                            <p>
-                                                An exploration into the truck's polarising design
-                                            </p>
-                                            <span class="tag tag-teal">Voyage</span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
+                                    <?php
+                                    $Requete="SELECT S_ID FROM stories";
+                                    $response = $BDD->prepare($Requete);
+                                    $response->execute();
+                                    $Stories=$response->fetch();
+                                    foreach($Stories as $numbers)
+                                    {
+                                        $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
+                                        $response = $BDD->prepare($Requete);
+                                        $response->execute(array("NUMBERS"=>$numbers));
+                                    }
+                                        while($StoryInfo=$response->fetch())
+                                        {
+                                        ?>
+                                            <div class="card swiper-slide" >
+                                                <div class="card-body-due">
+                                                    <h3>
+                                                        <?=$StoryInfo['title']?>
+                                                    </h3>
+                                                </div>
+                                                <div class="card-header">
+                                                    <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>
+                                                        <?=$StoryInfo['desc']?>
+                                                    </p>
+                                                    <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
+                                                    <!--
+                                                    <div class="user">
+                                                        <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                                        <div class="user-info">
+                                                            <h5>July Dec</h5>
+                                                            <small>2h ago</small>
+                                                        </div>
+                                                    </div>
+                                                    -->
                                                 </div>
                                             </div>
-                                            -->
-                                        </div>
-                                    </div>
-
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                TITRE
-                                            </h3>
-                                        </div>
-                                        <div class="card-header">
-                                            <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-                                        </div>
-                                        <div class="card-body">
-                                            <p>
-                                                Lorem ipsum awawawa sdkfhqsofkjbqsfjhqsbdfjqsvbfjqhsbdfjqsd
-                                            </p>
-                                            <span class="tag tag-purple">Voyage</span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
-                                    </div>
-
-                                    <div class="card swiper-slide"  >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                TITRE
-                                            </h3>
-                                        </div>
-                                        <div class="card-header">
-                                            <img src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg" alt="rover" />
-                                        </div>
-                                        <div class="card-body">
-                                            <p>
-                                                oy oy oy qsd bkqdsfvqdshgjvqskdhgfqd qdshjbfqkjsd
-                                            </p>
-                                            <span class="tag tag-pink">Voyage</span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
-                                    </div>
-
+                                        <?php
+                                        }
+                                        ?>
                                 </div>
                                 <!-- If we need navigation buttons -->
                                 <div class="swiper-button-prev" data-scroll data-scroll-speed="1"></div>
