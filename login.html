@@ -57,7 +57,7 @@
               <div class="contact">
                 <div class="formblockcentered">
                   <div class="form-block w-form">
-                    <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get" class="form">
+                    <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="POST" class="form" action="login.php">
                       <div class="columns-3 w-row">
                         <div class="columnnopaddingleft w-col w-col-6">
                           <input type="email" class="contacttextfield w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""/>
@@ -71,8 +71,8 @@
                       </div>
 
                       <div class="contactbutton">
-                        <a href="/"><button class="bn632-hover bn25">Se connecter</button></a>
-                        <a href="/"><button class="bn632-hover bn25">S'inscrire</button></a>
+                        <button type="submit" class="bn632-hover bn25">Se connecter</button>
+                        <button type="submit" class="bn632-hover bn25">S'inscrire</button>
                       </div>
                     </form>
 
