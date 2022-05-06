@@ -41,7 +41,8 @@
                 </div>
             </div>
             </div>
-
+            <!-- The actual snackbar -->
+            <div id="snackbar">Some text some message..</div>
 
 
         <div>
@@ -50,6 +51,8 @@
 
 
     </div>
+
+        
     <?php
     }
     if(logged($BDD))

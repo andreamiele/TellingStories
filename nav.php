@@ -43,7 +43,7 @@ include('connect.php');
                 else
                 {
                 ?>
-                <a href="login.html" class="up">Se connecter</a>
+                <a href="login.php" class="up">Se connecter</a>
                 <?php
                 }
                 ?>

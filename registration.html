@@ -63,8 +63,12 @@
                     <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
                     <input type="text" class="contacttextfield w-input" maxlength="256" name="Prénom" data-name="Prénom" placeholder="Prénom" id="Prénom" required=""/>
                     <input type="email" class="contacttextfield w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""/>
-                    <input type="password" class="contacttextfield w-input" maxlength="256" name="password" data-name="password" placeholder="Mot de passe" id="password" required=""/>
-                    <input type="password" class="contacttextfield w-input" maxlength="256" name="password2" data-name="password2" placeholder="Confirmer le mot de passe" id="password2" required=""/>
+                    <input id="password" type="password" class="contacttextfield w-input" maxlength="256" name="password" data-name="password" placeholder="Mot de passe" id="password" required=""/>
+
+                    <input id="password2"type="password" class="contacttextfield w-input" maxlength="256" name="password2" data-name="password2" placeholder="Confirmer le mot de passe" id="password2" required=""/>
+                    <div >
+                      <img id="error" src='img/gooseMot.tiff' style="display:none">
+                    </div>
                   </div>
 
                 </div>
@@ -97,6 +101,21 @@
   (function () {
     var scroll = new LocomotiveScroll();
   })();
+
+
+  var myInput = document.getElementById("password");
+  var myInput2 = document.getElementById("password2");
+
+  myInput2.addEventListener("change", ()=>{if (myInput2.value != myInput.value) {
+    var error = document.getElementById("error");
+    error.style.display="block";
+
+  } else{
+    document.getElementById("error").style.display="none";
+  }})
+
+
+
 </script>
 </body>
 
