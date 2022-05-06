@@ -23,7 +23,7 @@ include('connect.php');
                     </div>
                 </a>
 
-                <a href="">
+                <a href="infos.php">
                     <div class="textwrapper2">
                         <div class="up">
                             A propos
