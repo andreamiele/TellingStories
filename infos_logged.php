@@ -11,48 +11,74 @@
             </h1>
 
         </div>
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <div class="center">
+            <form  action="">
 
+                    <h1>Suppression de compte</h1>
+                    <p>Voulez-vous vraiment supprimer votre compte ?</p>
+
+                    <div class="clearfix">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="bn632-hover bn22">Cancel</button>
+                        <button type="button" class="bn632-hover bn28">Delete</button>
+                    </div>
+
+            </form>
+            </div>
+        </div>
 
         <div class="card-history" data-scroll data-scroll-speed="1">
         <div class="accueilrang-el-ments centre">
-            <div class="card-body">
-                <form id="stripe-login">
-                    <div class="field padding-bottom--24">
-                        <label for="titre">Titre</label>
-                        <input type="text" name="titre" id ="titre">
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <label for="annee">Catégorie</label>
-                        <input type="text" name="categorie" id ="categorie">
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <label for="annee">Année</label>
-                        <input type="text" name="annee" id ="annee">
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <label for="couverture">Couverture</label>
-                        <input type="file" name="couverture" id ="couverture">
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <label for="auteur">Auteur</label>
-                        <input type="text" name="auteur" id="auteur">
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <label for="textarea">Description</label>
-                        <textarea  id="textarea" ></textarea>
-                    </div>
 
+                <div class="div-block-5">
 
-                </form>
+                    Login :
+
+                </div>
+
+                <div class="div-block-5">
+
+                    <img src="">
+
+                </div>
+
+                <div class="div-block-5">
+
+                    Nombre d'histoires jouées :
+                    Nombre de victoires :
+                    Nombre de défaites :
+
+                </div>
+            <div class="div-block-5">
+
+                ouioui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui nonoui non
+
             </div>
+
+
 
         </div>
         </div>
         </br>
         <div class="contactbutton">
-            <a href="write-parag.php"><button class="bn632-hover-2 bn25">Accéder au premier paragraphe</button></a>
+            <a href="write-parag.php"><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
+            <button class="bn632-hover-2 bn25" onclick="document.getElementById('id01').style.display='block'">Supprimer mon compte</button>
         </div>
     </div>
 </div>
 
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+
+        }
+    </script>
 <?php include("footer.php") ?>
