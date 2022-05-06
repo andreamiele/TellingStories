@@ -1275,6 +1275,20 @@ hr {
     bottom: 30px; /* 30px from the bottom */
 }
 
+.bn632-hover-2.bn19 {
+    background-image: linear-gradient(
+            to right,
+            #f5ce62,
+            #e43603,
+            #fa7199,
+            #e85a19
+    );
+    box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+}
+
+
+
+
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
     visibility: visible; /* Show the snackbar */
