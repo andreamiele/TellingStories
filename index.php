@@ -37,7 +37,7 @@
                                     $readStories=$response->fetch();
                                     foreach($readStories as $numbers)
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_iD =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
                                         $response->execute(array("NUMBERS"=>$numbers));
                                     }
