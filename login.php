@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include('entete.php');
 include('nav.php');
     if(isset($_POST['Email']) && isset($_POST['Password']))
@@ -42,8 +42,6 @@ include('nav.php');
                 </div>
             </div>
             </div>
-            <!-- The actual snackbar -->
-            <div id="snackbar">Some text some message..</div>
 
 
         <div>
@@ -53,9 +51,12 @@ include('nav.php');
 
     </div>
 
-        
+
+
+
     <?php
     }
+    include("footer.php");
     if(logged($BDD))
     {
     ?>

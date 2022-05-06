@@ -16,6 +16,16 @@
                     </div>
                 </div>
 
+                <!-- DIV A ECHO connexion connexion-->
+                <!-- DIV A ECHO -->
+                <!-- DIV A ECHO -->
+                <!-- DIV A ECHO -->
+                <!-- DIV A ECHO -->
+                <!-- DIV A ECHO -->
+                <div id="snackbar">Vous êtes connectés</div>
+
+
+
 
                 <div class="emballage">
                     <?php 
@@ -273,9 +283,26 @@
             </div>
         </div>
 
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
+<script>
+    function myFunction() {
 
 
+
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
+</script>
 
         <?php include("footer.php"); ?>
-    </body>
-</html>
