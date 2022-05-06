@@ -1,5 +1,6 @@
 <?php session_start();
-    include('connect.php');
+include('entete.php');
+include('nav.php');
     if(isset($_POST['Email']) && isset($_POST['Password']))
     {
         $_SESSION['login']=$_POST['Email'];
