@@ -34,6 +34,7 @@
             $txt_file = fopen($fileName, 'r');
             $Title;
             $Author;
+            $date=date(DATE_RSS);
             $NumPara;
             $Para;
             $Audio;
@@ -103,3 +104,16 @@
     {
         echo "Acces Denied ! You are not an administrator";
     }
+    $Request="INSERT INTO stories (S_ID, title, picture, create_date, vues) VALUES ((SELECT MAX(S_ID)+1 FROM stories),:TITLE, :PICTURE,:DAT,0);";
+    $response = $BDD->prepare($Requete);
+    $response->execute(array("TITLE"=>$Title, "PICTURE"=>$Image,"DAT"=>$date));
+    foreach($NumPara as $Num)
+    {
+        $Request="INSERT INTO paragraphs (S_ID, P_ID, `text`, back_image, sound, nbTrophee) VALUES ((SELECT MAX(S_ID) FROM stories),:NUM,:PARA,:PICTURE)";
+        $response = $BDD->prepare($Requete);
+        $response->execute(array("NUM"=>$Num,"PARA"=>$Para[$Num],"PICTURE"=>$Image[$Num]));
+    }
+
+
+
+
