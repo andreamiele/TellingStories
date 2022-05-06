@@ -28,7 +28,7 @@ function secure($user_input)
                     </div>
                 </a>
 
-                <a href="">
+                <a href="infos.php">
                     <div class="textwrapper2">
                         <div class="up">
                             A propos
@@ -48,7 +48,7 @@ function secure($user_input)
                 else
                 {
                 ?>
-                <a href="login.html" class="up">Se connecter</a>
+                <a href="login.php" class="up">Se connecter</a>
                 <?php
                 }
                 ?>

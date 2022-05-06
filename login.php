@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 include('entete.php');
 include('nav.php');
     if(isset($_POST['Email']) && isset($_POST['Password']))
@@ -31,10 +31,11 @@ include('nav.php');
                         </div>
 
                         <div class="contactbutton">
-                            <button type="submit" class="bn632-hover bn25">Se connecter</button>
-                            <a href="registration.html"><button type="submit" class="bn632-hover bn25">S'inscrire</button></a>
+                            <button type="submit" class="bn632-hover-2 bn25">Se connecter</button>
+
                         </div>
                         </form>
+                        <a href="registration.php"><button type="submit" class="bn632-hover-2 bn19">S'inscrire</button></a>
 
                     </div>
                     </div>
@@ -42,7 +43,6 @@ include('nav.php');
                 </div>
             </div>
             </div>
-
 
 
         <div>
@@ -51,8 +51,13 @@ include('nav.php');
 
 
     </div>
+
+
+
+
     <?php
     }
+    include("footer.php");
     if(logged($BDD))
     {
     ?>
