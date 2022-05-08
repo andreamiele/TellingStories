@@ -111,7 +111,7 @@
                                     {
                                         $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$numbers));
+                                        $response->execute(array("NUMBERS"=>$Stories['S_ID']));
                                     }
                                         while($StoryInfo=$response->fetch())
                                         {
