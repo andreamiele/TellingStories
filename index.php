@@ -44,9 +44,9 @@
                                     $response->execute(array("LOGIN"=>$_SESSION['login']));
                                     while($readStories=$response->fetch())
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_iD =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$numbers));
+                                        $response->execute(array("NUMBERS"=>$readStories['S_ID']));
                                     }
                                         while($readStoryInfo=$response->fetch())
                                         {
