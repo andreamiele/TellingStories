@@ -21,7 +21,7 @@
 
                     <div class="clearfix">
                         <button onclick="document.getElementById('id01').style.display='none'" type="button" class="bn632-hover bn22">Cancel</button>
-                        <button type="button" class="bn632-hover bn28">Delete</button>
+                        <a href='deleteaccount.php'><button type="button" class="bn632-hover bn28">Delete</button></a>
                     </div>
 
             </form>
@@ -64,7 +64,7 @@
         </div>
         </br>
         <div class="contactbutton">
-            <a ><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
+            <a href="logout.php" ><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
             <button class="bn632-hover-2 bn25" onclick="document.getElementById('id01').style.display='block'">Supprimer mon compte</button>
         </div>
     </div>

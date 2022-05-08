@@ -12,7 +12,13 @@ function logged($BDD)
         {
             if($_COOKIE['nb']==1)
             {
-            return true;
+                $Requete="SELECT `Name`, Prenom users WHERE login=:LOGIN";
+                $response = $BDD->prepare($Requete);
+                $response->execute(array("LOGIN" => $_SESSION['login']));
+                $_COOKIE=$response->fetch();
+                $_SESSION['nom']=$_COOKIE['Name'];
+                $_SESSION['prenom']=$_COOKIE['Prenom'];
+                return true;
             }
         }
     }

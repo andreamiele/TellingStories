@@ -9,7 +9,7 @@
 
 <body>
     <?php
-    $userStatus = true; //Request admin(bool)
+    $userStatus = logged_admin($BDD); //Request admin(bool)
     if ($userStatus) {
     ?>
         <h1>Upload de votre histoire par fichier texte</h1>
@@ -99,20 +99,21 @@
             }
             fclose($txt_file);
         }
+        $Request="INSERT INTO stories (S_ID, title, picture, create_date, vues) VALUES ((SELECT MAX(S_ID)+1 FROM stories),:TITLE, :PICTURE,:DAT,0);";
+        $response = $BDD->prepare($Requete);
+        $response->execute(array("TITLE"=>$Title, "PICTURE"=>$Image,"DAT"=>$date));
+        foreach($NumPara as $Num)
+        {
+            $Request="INSERT INTO paragraphs (S_ID, P_ID, `text`, back_image, sound, nbTrophee) VALUES ((SELECT MAX(S_ID) FROM stories),:NUM,:PARA,:PICTURE)";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM"=>$Num,"PARA"=>$Para[$Num],"PICTURE"=>$Image[$Num]));
+        }
     }
     else
     {
         echo "Acces Denied ! You are not an administrator";
     }
-    $Request="INSERT INTO stories (S_ID, title, picture, create_date, vues) VALUES ((SELECT MAX(S_ID)+1 FROM stories),:TITLE, :PICTURE,:DAT,0);";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("TITLE"=>$Title, "PICTURE"=>$Image,"DAT"=>$date));
-    foreach($NumPara as $Num)
-    {
-        $Request="INSERT INTO paragraphs (S_ID, P_ID, `text`, back_image, sound, nbTrophee) VALUES ((SELECT MAX(S_ID) FROM stories),:NUM,:PARA,:PICTURE)";
-        $response = $BDD->prepare($Requete);
-        $response->execute(array("NUM"=>$Num,"PARA"=>$Para[$Num],"PICTURE"=>$Image[$Num]));
-    }
+    
 
 
 
