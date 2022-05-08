@@ -12,7 +12,7 @@ function logged($BDD)
         {
             if($_COOKIE['nb']==1)
             {
-                $Requete="SELECT `Name`, Prenom users WHERE login=:LOGIN";
+                $Requete="SELECT `Name`, Prenom FROM users WHERE login=:LOGIN";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("LOGIN" => $_SESSION['login']));
                 $_COOKIE=$response->fetch();
