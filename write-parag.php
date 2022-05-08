@@ -66,8 +66,14 @@
                                     </svg>
                                 </button>
 
-                        </div>
 
+
+                        </div>
+                        <div class="contactbutton">
+                        <button class="bn632-hover-2 bn25"  id="btn" type="button">
+                            Paragraphe suivant
+                        </button>
+                        </div>
 
                     </form>
                 </div>

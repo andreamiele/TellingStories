@@ -46,8 +46,8 @@
                 <div class="div-block-5">
 
                     Nombre d'histoires jouées :
-                    Nombre de victoires :
-                    Nombre de défaites :
+                    </br>Nombre de victoires :
+                    </br>Nombre de défaites :
 
                 </div>
             <div class="div-block-5">
@@ -62,7 +62,7 @@
         </div>
         </br>
         <div class="contactbutton">
-            <a href="write-parag.php"><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
+            <a ><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
             <button class="bn632-hover-2 bn25" onclick="document.getElementById('id01').style.display='block'">Supprimer mon compte</button>
         </div>
     </div>

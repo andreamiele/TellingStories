@@ -252,7 +252,7 @@
                                         <div class="form-block w-form">
                                             <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get" class="form">
                                                 <div class="columns-3 w-row">
-                                                    <div class="columnnopaddingleft first w-col w-col-6">
+                                                    <div class="columnnopadding w-col w-col-6">
                                                         <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
 
                                                     </div>
@@ -276,10 +276,7 @@
 
 
                 </div>
-
-                <div>
-                    Ceci est la fin du site.
-                </div>
+                <?php include("messagefin.php") ?>
             </div>
         </div>
 

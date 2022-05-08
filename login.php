@@ -45,9 +45,7 @@ include('nav.php');
             </div>
 
 
-        <div>
-            Ceci est la fin du site.
-        </div>
+
 
 
     </div>

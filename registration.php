@@ -26,9 +26,9 @@ if(!isset($_POST['Nom']))
                       <img id="error" src='img/gooseMot.tiff' style="display:none">
                     </div>
                   </div>
-
+                </div>
                   <div class="contactbutton">
-                    <button type='submit' class="bn632-hover bn25">S'inscrire</button>
+                    <button type='submit' class="bn632-hover-2 bn25">S'inscrire</button>
                   </div>
                 </form>
 
@@ -67,13 +67,9 @@ else
   }
 }
 ?>
-  <div>
-      Ceci est la fin du site.
-  </div>
+
 <?php include('footer.php');?>
-  <footer>
-    Telling stories.
-  </footer>
+
 
 </div>
 <script src="locomotive-scroll.min.js"></script>
