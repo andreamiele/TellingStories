@@ -13,7 +13,7 @@ if(!isset($_POST['Nom']))
           <div class="formblockcentered">
             <div class="form-block w-form">
               <?php ?>
-              <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="POST" class="form">
+              <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="POST" class="form" action="">
                 <div class="columns-3 w-row">
                   <div class="columnnopaddingleft w-col w-col-6">
                     <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
@@ -26,7 +26,10 @@ if(!isset($_POST['Nom']))
                       <img id="error" src='img/gooseMot.tiff' style="display:none">
                     </div>
                   </div>
+
                 </div>
+
+
                   <div class="contactbutton">
                     <button type='submit' class="bn632-hover-2 bn25">S'inscrire</button>
                   </div>
@@ -57,13 +60,11 @@ else
     $response->execute(array("ID"=>$User_number,"NOM"=>secure($_POST['Nom']),"PRENOM"=>secure($_POST['Prenom']),"EMAIL"=>secure($_POST['Email']), "PASS"=>secure($_POST['password'])));
   }
   else
-  {?>
-    <h2>Cet Email a déjà été utilisé !</h2>
-    
-  <?php
-  sleep(1);
-  header("Location:registration.php", TRUE, 301);
-  exit();
+  {
+    $_SESSION['used_email']=true;
+    sleep(30);
+    header("Location:registration.php", TRUE, 301);
+    exit();
   }
 }
 ?>

@@ -16,17 +16,15 @@
                     </div>
                 </div>
 
-                <!-- DIV A ECHO connexion connexion-->
-                <!-- DIV A ECHO -->
-                <!-- DIV A ECHO -->
-                <!-- DIV A ECHO -->
-                <!-- DIV A ECHO -->
-                <!-- DIV A ECHO -->
-                <div id="snackbar">Vous êtes connectés</div>
-
-
-
-
+                <?php
+                if(isset($_SESSION['connecte']))
+                {
+                    if($_SESSION['connecte'])
+                    {
+                        echo'<div id="snackbar">Vous êtes connecté !</div>';
+                    }
+                }
+                ?>
                 <div class="emballage">
                     <?php 
                     if(logged($BDD))
@@ -279,14 +277,8 @@
                 <?php include("messagefin.php") ?>
             </div>
         </div>
-
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<!-- SCRIPT A ECHO POUR LA CONNEXIONNNN-->
-<script>
+<?php
+echo'<script>
     function myFunction() {
 
 
@@ -300,6 +292,6 @@
         // After 3 seconds, remove the show class from DIV
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
-</script>
+</script>';
 
-        <?php include("footer.php"); ?>
+include("footer.php"); ?>

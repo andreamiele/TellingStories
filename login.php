@@ -1,6 +1,12 @@
 <?php
 include('entete.php');
 include('nav.php');
+    if(logged($BDD))
+    {
+        $_SESSION['connecte']=true;
+        header("Location:index.php", TRUE, 301);
+        exit();
+    }
     if(isset($_POST['Email']) && isset($_POST['Password']))
     {
         $_SESSION['login']=$_POST['Email'];
@@ -49,19 +55,13 @@ include('nav.php');
 
 
     </div>
-
-
-
-
     <?php
     }
     include("footer.php");
     if(logged($BDD))
     {
-    ?>
-        <h2 class="text-center">Vous êtes connecté <?=$_SESSION['login']?> !</h2>
-    <?php
-    header("Location:index.php", TRUE, 301);
-    exit();
+        $_SESSION['connecte']=true;
+        header("Location:index.php", TRUE, 301);
+        exit();
     }
 ?> 
