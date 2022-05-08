@@ -104,14 +104,14 @@
                             <div class="container swiper" >
                                 <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                     <?php
-                                    $Requete="SELECT S_ID FROM stories";
+                                    $Requete="SELECT S_ID as num FROM stories";
                                     $response = $BDD->prepare($Requete);
                                     $response->execute();
                                     while($Stories=$response->fetch())
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$Stories['S_ID']));
+                                        $response->execute(array("NUMBERS"=>$Stories['num']));
                                     }
                                         while($StoryInfo=$response->fetch())
                                         {
