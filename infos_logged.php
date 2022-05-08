@@ -7,7 +7,7 @@
 
 
             <h1 class="accueiltitrelivre">
-                Bienvenue NomUtilisateur <!-- Mettre le nom d'utilisateur qui est connecté -->
+                Bienvenue <?php echo($_SESSION["nom"].$_SESSION["prenom"]) ?>> <!-- Mettre le nom d'utilisateur qui est connecté -->
             </h1>
 
         </div>
