@@ -67,7 +67,7 @@
 
 <!-- Mettre la valeur prévue dans le paragraphe en paramètre de la fonction-->
 
-<!-- Il faut mettre une valeur null ou inutilisé si on ne fait pas de ranom afin que je puisse faire un if / else -->
+<!-- Il faut mettre une valeur null ou inutilisé si on ne fait pas de random afin que je puisse faire un if / else -->
 <script>
     function clickrandom(){
         var result ="<?php random(); ?>"

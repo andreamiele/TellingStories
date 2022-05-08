@@ -68,6 +68,14 @@
             <a href="logout.php" ><button class="bn632-hover-2 bn25">Se déconnecter</button></a>
             <button class="bn632-hover-2 bn25" onclick="document.getElementById('id01').style.display='block'">Supprimer mon compte</button>
         </div>
+        <?php
+        $userStatus = logged_admin($BDD); //Request admin(bool)
+        if ($userStatus) {
+        ?>
+            <div class="contactbutton">
+                <a href=""></a><button class="bn632-hover bn28">Interface admin</button></a>
+            </div>
+        <?php } ?>
     </div>
 </div>
 
