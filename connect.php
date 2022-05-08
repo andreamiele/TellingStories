@@ -29,7 +29,7 @@ function logged_admin($BDD)
 {
     if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
-        $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=1";
+        $Requete="SELECT COUNT(*) as admin_nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=1";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
             "LOGIN" => $_SESSION['login'],
