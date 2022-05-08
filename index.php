@@ -47,7 +47,6 @@
                                         $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
                                         $response->execute(array("NUMBERS"=>$readStories['S_ID']));
-                                    }
                                         while($readStoryInfo=$response->fetch())
                                         {
                                     ?>
@@ -78,6 +77,7 @@
                                             </div>
                                         <?php
                                         }
+                                    }
                                         ?>
 
                                 </div>
@@ -104,15 +104,14 @@
                             <div class="container swiper" >
                                 <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                     <?php
-                                    $Requete="SELECT S_ID as num FROM stories";
+                                    $Requete="SELECT * FROM stories";
                                     $response = $BDD->prepare($Requete);
                                     $response->execute();
                                     while($Stories=$response->fetch())
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE `S_ID`=:NUMBERS";
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$Stories['num']));
-                                    }
+                                        $response->execute(array("NUMBERS"=>$Stories['S_ID']));
                                         while($StoryInfo=$response->fetch())
                                         {
                                         ?>
@@ -143,6 +142,8 @@
                                             </div>
                                         <?php
                                         }
+                                    }
+                                        
                                         ?>
                                 </div>
                                 <!-- If we need navigation buttons -->
