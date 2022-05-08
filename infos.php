@@ -43,6 +43,8 @@
             <p class="paragrapheu">
 
                     <button onclick="window.open('enonce.pdf')" type="button" class="bn632-hover bn22">Enoncé</button>
+                <button onclick="window.open('rapport.pdf')" type="button" class="bn632-hover bn22">Rapport</button>
+                <button onclick="window.open('audit.pdf')" type="button" class="bn632-hover bn22">Audit</button>
 
             </p>
             </br>
