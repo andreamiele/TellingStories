@@ -66,7 +66,7 @@ else
     $response = $BDD->prepare($Requete);
     $response->execute();
     $User_number=$response->fetch();
-    $Requete="INSERT INTO users (Nom, Prenom, `login`, `password`, nbTrophees) VALUES (:NOM, :PRENOM, :EMAIL, :PASS, 0);";
+    $Requete="INSERT INTO users (Nom, Prenom, `login`, `password`, nbTrophees, `admin`) VALUES (:NOM, :PRENOM, :EMAIL, :PASS, 0, 0);";
     $response = $BDD->prepare($Requete);
     $response->execute(array("NOM"=>secure($_POST['Nom']),"PRENOM"=>secure($_POST['Prénom']),"EMAIL"=>secure($_POST['Email']), "PASS"=>secure($_POST['password'])));
     header("Location:login.php", TRUE, 301);
