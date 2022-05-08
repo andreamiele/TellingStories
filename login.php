@@ -56,12 +56,12 @@ include('nav.php');
 
     </div>
     <?php
-    }
-    include("footer.php");
     if(logged($BDD))
     {
         $_SESSION['connecte']=true;
         header("Location:index.php", TRUE, 301);
         exit();
     }
+    }
+    include("footer.php");
 ?> 

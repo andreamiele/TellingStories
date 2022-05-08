@@ -52,7 +52,7 @@ function secure($user_input)
                                 </li>
                             </ul>
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Se déconnecter</a>
+                                <a href="logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">Se déconnecter</a>
                             </div>
                         </div>
                     <?php

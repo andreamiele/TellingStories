@@ -1,0 +1,7 @@
+<?php
+unset($_SESSION);
+unset($_POST);
+session_destroy();
+header("Location:index.php", FALSE, 301);
+exit();
+?>

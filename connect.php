@@ -1,6 +1,6 @@
 <?php
 function logged($BDD)
-{ if(isset($_Session['login']) && isset($_SESSION['password']))
+{ if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
         $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD";
         $response = $BDD->prepare($Requete);
@@ -8,10 +8,12 @@ function logged($BDD)
             "LOGIN" => $_SESSION['login'],
             "PASSWORD"=> $_SESSION['password']
         ));
-        $_COOKIE=$response->fetch();
-        if($_COOKIE['nb']==1)
+        while($_COOKIE=$response->fetch())
         {
-        return true;
+            if($_COOKIE['nb']==1)
+            {
+            return true;
+            }
         }
     }
     
@@ -19,7 +21,7 @@ function logged($BDD)
 }
 function logged_admin($BDD)
 {
-    if(isset($_Session['login']) && isset($_SESSION['password']))
+    if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
         $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=1";
         $response = $BDD->prepare($Requete);
@@ -27,10 +29,12 @@ function logged_admin($BDD)
             "LOGIN" => $_SESSION['login'],
             "PASSWORD"=> $_SESSION['password']
         ));
-        $_COOKIE=$response->fetch();
-        if($_COOKIE['admin_nb']==1)
+        while($_COOKIE=$response->fetch())
         {
-        return true;
+            if($_COOKIE['admin_nb']==1)
+            {
+            return true;
+            }
         }
     }
     return false;
