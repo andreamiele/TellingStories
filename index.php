@@ -109,7 +109,7 @@
                                     $response->execute();
                                     while($Stories=$response->fetch())
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag, FROM stories WHERE S_iD =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
                                         $response->execute(array("NUMBERS"=>$Stories['S_ID']));
                                     }
