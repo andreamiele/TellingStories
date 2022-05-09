@@ -8,19 +8,20 @@
         {
         if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
         {
-
-        $Requete="SELECT P_ID,text  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
+        array_push($_SESSION['chemin'],$_GET['P_ID']);
+        $Requete="SELECT P_ID,text,Suite,nbTrophee  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
         $response = $BDD->prepare($Requete);
         $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
-        $readStoryInfo=$response->fetch()
+        $readStoryInfo=$response->fetch();
+        $_SESSION['nbTrophee']+=$readStoryInfo['nbTrophee'];
+            if ($readStoryInfo['Suite']==2) // Continuer
+            {
         ?>
+
         <div class="accueilsection">
-
-
                     <h1 class="accueiltitrelivre">
                         <?=$readStoryInfo['P_ID']?>
                     </h1>
-
         </div>
         <div class="card-object" data-scroll data-scroll-speed="1">
             <div class="object-container">
@@ -33,24 +34,18 @@
                 <div class="object-body">
                     <h3> Object 1 :</h3>
                 </div>
-
-
-
             </div>
         </div>
 
     <div class="card-history" data-scroll data-scroll-speed="1">
-
         <div class="card-body">
             <p>
                 <?=$readStoryInfo['text']?>
             </p>
         </div>
-
-
-    </div>
-    </br>
+    </div> </br>
         <?php
+
         $Requete="SELECT ID_ARRIVEE,NOM_ACTION  FROM actions WHERE S_ID =:NUMBERS AND ID_DEPART =:NUMBERS2";
         $response = $BDD->prepare($Requete);
         $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
@@ -60,14 +55,93 @@
         {
 
         ?>
-        <div class="contactbutton">
-            <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&P_ID=<?=$ActionInfo['ID_ARRIVEE']?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
-        </div>
-        <?php } ?>
-        <div class="contactbutton">
-            <button onclick="clickrandom()" class="bn632-hover-2 bn19">Hasard !</button>
-        </div>
-<?php }}?>
+            <div class="contactbutton">
+                <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&P_ID=<?=$ActionInfo['ID_ARRIVEE']?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
+            </div>
+            <div class="contactbutton">
+                <button onclick="clickrandom()" class="bn632-hover-2 bn19">Hasard !</button>
+            </div>
+        <?php }
+            } // If continuer
+            elseif($readStoryInfo['Suite']==0) // VICTOIRE
+            {
+            ?>
+                <div class="accueilsection">
+                    <h1 class="accueiltitrelivre">
+                        VICTOIRE
+                    </h1>
+                </div>
+
+                <div class="card-object" data-scroll data-scroll-speed="1">
+                    <div class="object-container">
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-history" data-scroll data-scroll-speed="1">
+                    <div class="card-body">
+                        <p>
+                            <?=$readStoryInfo['text']?>
+                        </p>
+                    </div>
+                </div> </br>
+
+
+                <div class="contactbutton">
+                    <a href="recap.php?S_ID=<?=$_GET['S_ID'] ?>"><button class="bn632-hover bn25">RECAPITULATIF</button></a>
+                </div>
+        <?php
+            } // If victoire
+            elseif($readStoryInfo['Suite']==1) // DEFAITE
+            {
+        ?>
+                <div class="accueilsection">
+                    <h1 class="accueiltitrelivre">
+                        DEFAITE
+                    </h1>
+                </div>
+
+                <div class="card-object" data-scroll data-scroll-speed="1">
+                    <div class="object-container">
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                        <div class="object-body">
+                            <h3> Object 1 :</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-history" data-scroll data-scroll-speed="1">
+                    <div class="card-body">
+                        <p>
+                            <?=$readStoryInfo['text']?>
+                        </p>
+                    </div>
+                </div> </br>
+
+                <div class="contactbutton">
+                    <a href="recap.php?S_ID=<?=$_GET['S_ID'] ?>"><button class="bn632-hover bn25">RECAPITULATIF</button></a>
+                </div>
+
+
+                <?php
+            } // If Défaite
+        } // Isset
+        } // Logged BDD
+        ?>
     </div>
 </div>
 

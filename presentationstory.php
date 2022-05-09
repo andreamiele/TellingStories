@@ -52,7 +52,10 @@
             <a href="/"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Supprimer l'histoire</button></a>
         </div>
-        <?php } ?>
+        <?php }
+        $_SESSION['nbTrophee']=0;
+        $_SESSION['chemin']=array();
+        ?>
         <div class="contactbutton">
             <a href="read.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
         </div>
