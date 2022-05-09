@@ -37,34 +37,33 @@
                         <div class="container swiper" >
                             <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                 <?php
-                                $Requete="SELECT S_ID FROM advancement WHERE User_iD=(SELECT User_iD FROM users WHERE login=:LOGIN )";
+                                $Requete="SELECT * FROM stories";
+
                                 $response = $BDD->prepare($Requete);
-                                $response->execute(array("LOGIN"=>$_SESSION['login']));
-                                while($readStories=$response->fetch())
+                                $response->execute();
+
+
+
+                                while($stories=$response->fetch())
                                 {
-                                    $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
-                                    $response = $BDD->prepare($Requete);
-                                    $response->execute(array("NUMBERS"=>$readStories['S_ID']));
-                                }
-                                while($readStoryInfo=$response->fetch())
-                                {
+
                                     ?>
                                     <div class="card swiper-slide" >
                                         <div class="card-body-due">
                                             <h3>
-                                                <?=$readStoryInfo['title']?>
+                                                <?=$stories['title']?>
                                             </h3>
                                         </div>
                                         <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
                                             </div>
                                         </a>
                                         <div class="card-body">
                                             <p>
-                                                <?=$readStoryInfo['desc']?>
+                                                <?=$stories['desc']?>
                                             </p>
-                                            <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
+                                            <span class="tag tag-teal"><?=$stories['tag']?></span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -77,9 +76,13 @@
                                         </div>
                                     </div>
                                     <?php
-                                }
-                                ?>
 
+
+
+                                }
+
+
+                                ?>
                             </div>
                             <!-- If we need navigation buttons -->
                             <div class="swiper-button-prev" data-scroll data-scroll-speed="1"></div>
@@ -113,42 +116,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -180,42 +183,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -248,42 +251,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -319,42 +322,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -391,42 +394,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -459,42 +462,42 @@
 
                             while($stories=$response->fetch())
                             {
-                                $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                $response = $BDD->prepare($Requete);
-                                $response->execute(array("TITLE"=>$stories['S_ID']));
 
-                                while($StoryInfo=$response->fetch())
-                                {
-                                    ?>
-                                    <div class="card swiper-slide" >
-                                        <div class="card-body-due">
-                                            <h3>
-                                                <?=$StoryInfo['title']?>
-                                            </h3>
-                                        </div>
-                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
-                                            <div class="card-header">
-                                                <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                            </div>
-                                        </a>
-                                        <div class="card-body">
-                                            <p>
-                                                <?=$StoryInfo['desc']?>
-                                            </p>
-                                            <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
-                                            <!--
-                                            <div class="user">
-                                                <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                <div class="user-info">
-                                                    <h5>July Dec</h5>
-                                                    <small>2h ago</small>
-                                                </div>
-                                            </div>
-                                            -->
-                                        </div>
+                                ?>
+                                <div class="card swiper-slide" >
+                                    <div class="card-body-due">
+                                        <h3>
+                                            <?=$stories['title']?>
+                                        </h3>
                                     </div>
-                                    <?php
-                                }}
+                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                        <div class="card-header">
+                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <p>
+                                            <?=$stories['desc']?>
+                                        </p>
+                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                        <!--
+                                        <div class="user">
+                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                            <div class="user-info">
+                                                <h5>July Dec</h5>
+                                                <small>2h ago</small>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <?php
+
+
+
+                            }
+
+
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
