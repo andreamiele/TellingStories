@@ -38,7 +38,7 @@ if(logged($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="create">
+                    <form id="create" >
 
                         <div class="field padding-bottom--24">
                             <label for="Text">Texte</label>
@@ -110,8 +110,7 @@ if(logged($BDD))
     }
     else
     {
-        header("Location:write-history.php", TRUE, 301);
-        exit();
+
     }
 }
 else

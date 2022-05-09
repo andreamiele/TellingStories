@@ -116,29 +116,23 @@
                                     while($stories=$response->fetch())
                                     {
 
-                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
-                                        $response = $BDD->prepare($Requete);
-                                        $response->execute(array("TITLE"=>$stories['S_ID']));
-
-                                        while($StoryInfo=$response->fetch())
-                                        {
                                         ?>
                                             <div class="card swiper-slide" >
                                                 <div class="card-body-due">
                                                     <h3>
-                                                        <?=$StoryInfo['title']?>
+                                                        <?=$stories['title']?>
                                                     </h3>
                                                 </div>
                                                 <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                     <div class="card-header">
-                                                        <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                        <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
                                                     <p>
-                                                        <?=$StoryInfo['desc']?>
+                                                        <?=$stories['desc']?>
                                                     </p>
-                                                    <span class="tag tag-teal"><?=$StoryInfo['tag']?></span>
+                                                    <span class="tag tag-teal"><?=$stories['tag']?></span>
                                                     <!--
                                                     <div class="user">
                                                         <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -153,7 +147,7 @@
                                         <?php
 
 
-                                        }
+
                                     }
                                         
 

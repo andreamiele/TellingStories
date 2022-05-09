@@ -19,7 +19,7 @@ if(logged($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="stripe-login" method="POST" action="write-parag.php">
+                    <form id="stripe-login" method="POST" action="ajout_histoire.php">
                         <div class="field padding-bottom--24">
                             <label for="titre">Titre</label>
                             <input type="text" name="titre" id ="titre">
@@ -30,7 +30,7 @@ if(logged($BDD))
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="annee">Date d'écriture</label>
-                            <input type="date" name="date" id ="date">
+                            <input type="number" name="date" id ="date">
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="couverture">Couverture</label>
@@ -42,9 +42,11 @@ if(logged($BDD))
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="textarea">Description</label>
-                            <textarea  id="textarea" ></textarea>
+                            <textarea  id="textarea" name="descr"></textarea>
                         </div>
-
+                        <div class="contactbutton">
+                            <button type="submit" class="bn632-hover-2 bn25">Accéder au premier paragraphe</button>
+                        </div>
 
                     </form>
                 </div>
@@ -52,9 +54,7 @@ if(logged($BDD))
 
             </div>
             </br>
-            <div class="contactbutton">
-                <a href="write-parag.php"><button class="bn632-hover-2 bn25">Accéder au premier paragraphe</button></a>
-            </div>
+
         </div>
     </div>
 <?php 
