@@ -72,11 +72,11 @@ if(logged($BDD))
 
                             <div class="field padding-bottom--24">
                                 <label for="action">Action</label>
-                                <input type="text" id="action" name="action"/>
+                                <input type="text" id="action" name="action[]"/>
                             </div>
                             <div class="field padding-bottom--24">
                                 <label for="nbaction">Numero du paragraphe</label>
-                                <input type="number" id="nbaction" name="nbaction" />
+                                <input type="number" id="nbaction" name="action[]" />
                             </div>
                         </div>
                         <div class="contactbutton">
