@@ -67,7 +67,7 @@ if(logged($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="create" method="POST" action="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>"">
+                    <form id="create" method="POST" action="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>&S_ID=<?= $_GET['S_ID'] ?>">
 
                     <div class="field padding-bottom--24">
                         <label for="Text">Texte</label>
@@ -130,7 +130,7 @@ if(logged($BDD))
 
                     </div>
                     <div class="contactbutton">
-                        <button type="submit" formaction="ajout_paragraphe.php?P_ID=<?= $_GET['P_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
+                        <button type="submit" formaction="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>&S_ID=<?= $_GET['S_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
                             Paragraphe suivant
                         </button>
                     </div>
