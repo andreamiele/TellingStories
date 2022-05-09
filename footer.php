@@ -24,7 +24,7 @@
     function addField()
     {
         var div1=document.getElementById("parag");
-        div1.innerHTML+='<div class="headingline2" ></div><div class="field padding-bottom--24"> <label for="action">Action</label> <input type="text" id="action'+idNB+'" name="action'+idNB+'"/> </div> <div class="field padding-bottom--24"> <label for="nbaction">Numero du paragraphe</label> <input type="text" id="nbaction'+idNB+'" name="nbaction'+idNB+'" /> </div>';
+        div1.innerHTML+='<div class="headingline2" ></div><div class="field padding-bottom--24"> <label for="action">Action</label> <input type="text" id="action'+idNB+'" name="action'+idNB+'"/> </div> <div class="field padding-bottom--24"> <label for="nbaction">Numero du paragraphe</label> <input type="number" id="nbaction'+idNB+'" name="nbaction'+idNB+'" /> </div>';
         idNB ++;
 
         scroll.update();

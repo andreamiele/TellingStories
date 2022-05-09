@@ -1,4 +1,5 @@
-<?php include("connect.php");
+<?php session_start();
+include("connect.php");
 
 function secure($user_input)
 {
@@ -6,12 +7,12 @@ function secure($user_input)
     return $secure_input;
 }
 
-$Requete="INSERT INTO stories (title, `desc`, `tag`, `create_date`, picture, `auteur`) VALUES (:TITLE, :DESCR, :TAG, :CREATE_DATE, :PIC, :AUTEUR);";
+$Requete="INSERT INTO stories (title, `desc`, `tag`, `create_date`, picture, `auteur`, write_date) VALUES (:TITLE, :DESCR, :TAG, :CREATE_DATE, :PIC, :AUTEUR, :WDATE);";
 $response = $BDD->prepare($Requete);
-$response->execute(array("TITLE"=>secure($_POST['titre']),"DESCR"=>secure($_POST['descr']),"TAG"=>secure($_POST['categorie']), "CREATE_DATE"=>secure($_POST['date']), "PIC"=>secure($_POST['couverture']), "AUTEUR"=>secure($_POST['auteur'])));
+$response->execute(array("TITLE"=>secure($_POST['titre']),"DESCR"=>secure($_POST['descr']),"TAG"=>secure($_POST['categorie']), "CREATE_DATE"=>secure($_POST['date']), "PIC"=>secure($_POST['couverture']), "AUTEUR"=>secure($_POST['auteur']), "WDATE"=> date("Y");));
 
 $_SESSION['id_histoire']= $BDD -> lastInsertId();
-$location = "Location: write-parag.php?S_ID=".$_SESSION['id_histoire']."&P_ID=1";
+$location = "Location: write-parag.php?&P_ID=1";
 header( $location);
 exit();
 
