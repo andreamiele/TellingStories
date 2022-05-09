@@ -73,7 +73,7 @@
         if ($userStatus) {
         ?>
             <div class="contactbutton">
-                <a href=""></a><button class="bn632-hover bn28">Interface admin</button></a>
+                <a href="adminpannel.php"></a><button class="bn632-hover bn28">Interface admin</button></a>
             </div>
         <?php } ?>
     </div>

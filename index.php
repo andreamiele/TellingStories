@@ -57,9 +57,11 @@
                                                         <?=$readStoryInfo['title']?>
                                                     </h3>
                                                 </div>
-                                                <div class="card-header">
-                                                    <img src="<?=$readStoryInfo['picture']?>" alt="<?=$readStoryInfo['tag']?>" />
-                                                </div>
+                                                <a href="">
+                                                    <div class="card-header">
+                                                        <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                    </div>
+                                                </a>
                                                 <div class="card-body">
                                                     <p>
                                                         <?=$readStoryInfo['desc']?>
@@ -104,15 +106,19 @@
                             <div class="container swiper" >
                                 <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                     <?php
-                                    $Requete="SELECT S_ID as num FROM stories";
+                                    $Requete="SELECT * FROM stories";
+
                                     $response = $BDD->prepare($Requete);
                                     $response->execute();
-                                    while($Stories=$response->fetch())
+
+
+
+                                    while($stories=$response->fetch())
                                     {
-                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:NUMBERS";
+                                        $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$Stories['num']));
-                                    }
+                                        $response->execute(array("TITLE"=>$stories['S_ID']));
+
                                         while($StoryInfo=$response->fetch())
                                         {
                                         ?>
@@ -122,9 +128,11 @@
                                                         <?=$StoryInfo['title']?>
                                                     </h3>
                                                 </div>
-                                                <div class="card-header">
-                                                    <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
-                                                </div>
+                                                <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
+                                                    <div class="card-header">
+                                                        <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                    </div>
+                                                </a>
                                                 <div class="card-body">
                                                     <p>
                                                         <?=$StoryInfo['desc']?>
@@ -142,7 +150,7 @@
                                                 </div>
                                             </div>
                                         <?php
-                                        }
+                                        }}
                                         ?>
                                 </div>
                                 <!-- If we need navigation buttons -->
