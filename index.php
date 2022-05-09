@@ -47,7 +47,6 @@
                                         $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
                                         $response = $BDD->prepare($Requete);
                                         $response->execute(array("NUMBERS"=>$readStories['S_ID']));
-                                    }
                                         while($readStoryInfo=$response->fetch())
                                         {
                                     ?>
@@ -80,6 +79,7 @@
                                             </div>
                                         <?php
                                         }
+                                    }
                                         ?>
 
                                 </div>
@@ -115,6 +115,7 @@
 
                                     while($stories=$response->fetch())
                                     {
+
                                         $Requete="SELECT title, `desc`, picture, tag FROM stories WHERE S_ID =:TITLE";
                                         $response = $BDD->prepare($Requete);
                                         $response->execute(array("TITLE"=>$stories['S_ID']));
@@ -150,7 +151,12 @@
                                                 </div>
                                             </div>
                                         <?php
-                                        }}
+
+
+                                        }
+                                    }
+                                        
+
                                         ?>
                                 </div>
                                 <!-- If we need navigation buttons -->
