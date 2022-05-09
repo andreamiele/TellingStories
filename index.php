@@ -58,7 +58,7 @@
                                                 </div>
                                                 <a href="">
                                                     <div class="card-header">
-                                                        <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
+                                                        <img src="<?=$readStoryInfo['picture']?>" alt="<?=$readStoryInfo['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
@@ -145,9 +145,6 @@
                                                 </div>
                                             </div>
                                         <?php
-
-
-
                                     }
                                         
 

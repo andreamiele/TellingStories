@@ -49,7 +49,7 @@
         <div class="contactbutton">
             <a href="/"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
-            <a href="/"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
+            <a href="hidden.php?S_ID<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Supprimer l'histoire</button></a>
         </div>
         <?php } ?>
@@ -59,6 +59,11 @@
 
     </div>
     <?php }
+        }
+        else
+        {
+            echo "<h1>You must create an account to read our stories ;)</h1> </br> <h2>Redirection ...</h2>";
+            echo '<a href="login.php"><button  class="bn632-hover-2 bn19">Se connecter</button></a>';
         }
         ?>
 </div>
