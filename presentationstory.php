@@ -67,7 +67,6 @@
             <?php }
             ?>
 
-            <a href="hidden.php?S_ID<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Supprimer l'histoire</button></a>
         </div>
         <?php }
