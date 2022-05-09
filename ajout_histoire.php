@@ -7,6 +7,7 @@ function secure($user_input)
     return $secure_input;
 }
 
+
 $Requete="INSERT INTO stories (title, `desc`, `tag`, `create_date`, picture, `auteur`, write_date) VALUES (:TITLE, :DESCR, :TAG, :CREATE_DATE, :PIC, :AUTEUR, :WDATE);";
 $response = $BDD->prepare($Requete);
 $response->execute(array("TITLE"=>secure($_POST['titre']),"DESCR"=>secure($_POST['descr']),"TAG"=>secure($_POST['categorie']), "CREATE_DATE"=>secure($_POST['date']), "PIC"=>secure($_POST['couverture']), "AUTEUR"=>secure($_POST['auteur']), "WDATE"=> date("Y")));

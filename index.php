@@ -266,7 +266,7 @@
                                 <div class="contact">
                                     <div class="formblockcentered">
                                         <div class="form-block w-form">
-                                            <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get" class="form">
+                                            <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="post" class="form" >
                                                 <div class="columns-3 w-row">
                                                     <div class="columnnopadding w-col w-col-6">
                                                         <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
@@ -292,6 +292,7 @@
 
 
                 </div>
+
                 <?php include("messagefin.php") ?>
             </div>
         </div>

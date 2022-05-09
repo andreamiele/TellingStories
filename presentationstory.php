@@ -72,7 +72,7 @@
         if ($userStatus) {
         ?>
         <div class="contactbutton">
-            <a href="/"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
+            <a href="modifypage.php?S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
             <?php
             if ($readStoryInfo['hidden']==0){?>
