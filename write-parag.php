@@ -2,7 +2,7 @@
 include("nav.php");
 if(logged($BDD))
 {
-    if(isset($_POST['title']))
+    /*if(isset($_POST['title']))
     {
         // If upload button is clicked ...
         if (isset($_POST['file'])) 
@@ -20,7 +20,7 @@ if(logged($BDD))
               }
               else{
                   $msg = "Failed to upload image";}
-        }
+        }*/
         
 ?>
     <div class="conteneurpage" data-scroll-section>
@@ -107,11 +107,12 @@ if(logged($BDD))
         </div>
     </div>
 <?php
-    }
+    /*}
     else
     {
 
     }
+}*/
 }
 else
 {
