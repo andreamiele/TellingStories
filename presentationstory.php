@@ -73,7 +73,7 @@
         ?>
         <div class="contactbutton">
             <a href="modifypage.php?S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
-            <a href="/"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
+            <a href="modifyparag.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
             <?php
             if ($readStoryInfo['hidden']==0){?>
                 <a href="functions/hidden.php?info=0&S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
