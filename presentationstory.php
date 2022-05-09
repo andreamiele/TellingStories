@@ -23,6 +23,22 @@
 
         </div>
 
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <div class="center">
+                <form  action="">
+
+                    <h1>Suppression histoire</h1>
+                    <p>Voulez-vous vraiment supprimer cette histoire?</p>
+
+                    <div class="clearfix">
+                        <button onclick="document.getElementById('id01').style.display='none'" type="button" class="bn632-hover bn22">Cancel</button>
+                        <a href="functions/deletestorie.php?S_ID=<?=$_GET['S_ID']?>"><button type="button" class="bn632-hover bn28">Delete</button></a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
 
         <div class="card-history" style="display:flex; justify-content: space-around;" data-scroll data-scroll-speed="1">
 
@@ -67,7 +83,7 @@
             <?php }
             ?>
 
-            <a href="/"><button class="bn632-hover bn25">Supprimer l'histoire</button></a>
+            <button onclick="document.getElementById('id01').style.display='block'" class="bn632-hover bn25">Supprimer l'histoire</button>
         </div>
         <?php }
         $_SESSION['nbTrophee']=0;
@@ -104,6 +120,17 @@
     rand(0,$x);
 }
 ?>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
 
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+    }
+</script>
 <?php include("footer.php") ?>
 

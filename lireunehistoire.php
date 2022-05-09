@@ -56,7 +56,15 @@
                                         </div>
                                         <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
-                                                <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                                <img src="<?php
+                                                if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                                else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                                ?>" alt="<?=$stories['tag']?>" />
                                             </div>
                                         </a>
                                         <div class="card-body">
@@ -126,7 +134,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
@@ -193,7 +209,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
@@ -261,7 +285,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
@@ -332,7 +364,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
@@ -404,7 +444,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
@@ -472,7 +520,15 @@
                                     </div>
                                     <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                         <div class="card-header">
-                                            <img src="<?=$stories['picture']?>" alt="<?=$stories['tag']?>" />
+                                            <img src="<?php
+                                            if ($stories['picture']!=null){?>
+                                                        <?=$stories['picture']?>
+
+                                                        <?php }
+                                            else{ ?>
+                                                        https://picsum.photos/200/300
+                                                        <?php }
+                                            ?>" alt="<?=$stories['tag']?>" />
                                         </div>
                                     </a>
                                     <div class="card-body">
