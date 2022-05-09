@@ -1,6 +1,28 @@
-<?php include("entete.php") ?>
-<?php include("nav.php") ?>
-
+<?php include("entete.php");
+include("nav.php");
+if(logged($BDD))
+{
+    if(isset($_POST['title']))
+    {
+        // If upload button is clicked ...
+        if (isset($_POST['file'])) 
+        {
+            $filename = $_FILES["couverture"]["name"];
+            $tempname = $_FILES["couverture"]["tmp_name"];    
+            $folder = "image/".$filename;
+              // Get all the submitted data from the form
+              $Requete="INSERT INTO stories VALUES(:TITLE,:`DESC`,:TAG,:CREATE_DATE,:WRITE_DATE,:VUES,:PICTURE)";
+              $response = $BDD->prepare($Requete);
+              $response->execute(array("TITLE"=>$_POST['title'],"DESC"=>$_POST['desc'],"TAG"=>$_POST['tag'],"CREATE_DATE"=>date("y-m-d"),"WRITE_DATE"=>$_POST['date'],0,"PICTURE"=>$filename));
+              // Now let's move the uploaded image into the folder: image
+              if (move_uploaded_file($tempname, $folder))  {
+                  $msg = "Image uploaded successfully";
+              }
+              else{
+                  $msg = "Failed to upload image";}
+        }
+        
+?>
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
             <div class="accueilsection">
@@ -84,5 +106,16 @@
 
         </div>
     </div>
-
-<?php include("footer.php") ?>
+<?php
+    }
+    else
+    {
+        header("Location:write-history.php", TRUE, 301);
+        exit();
+    }
+}
+else
+{
+    echo "Access denied! You are not an administrator";
+}
+include("footer.php"); ?>

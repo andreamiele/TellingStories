@@ -1,5 +1,8 @@
-<?php include("entete.php") ?>
-<?php include("nav.php") ?>
+<?php include("entete.php");
+include("nav.php");
+if(logged($BDD))
+{
+?>
 
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
@@ -16,7 +19,7 @@
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="stripe-login">
+                    <form id="stripe-login" method="POST" action="write-parag.php">
                         <div class="field padding-bottom--24">
                             <label for="titre">Titre</label>
                             <input type="text" name="titre" id ="titre">
@@ -26,8 +29,8 @@
                             <input type="text" name="categorie" id ="categorie">
                         </div>
                         <div class="field padding-bottom--24">
-                            <label for="annee">Année</label>
-                            <input type="text" name="annee" id ="annee">
+                            <label for="annee">Date d'écriture</label>
+                            <input type="date" name="date" id ="date">
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="couverture">Couverture</label>
@@ -54,5 +57,6 @@
             </div>
         </div>
     </div>
-
-<?php include("footer.php") ?>
+<?php 
+}
+include("footer.php"); ?>
