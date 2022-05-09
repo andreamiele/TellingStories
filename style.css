@@ -379,6 +379,14 @@ a{
     background-color: #cd5b9f;
 }
 
+.tag-green {
+    background-color: #588157;
+}
+
+.tag-red {
+    background-color: #d62828;
+}
+
 .card-body p {
     font-size: 13px;
     margin: 0 0 40px;

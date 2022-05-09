@@ -112,10 +112,10 @@
                                     $response->execute();
 
 
-
+                                    $userStatus = logged_admin($BDD);
                                     while($stories=$response->fetch())
                                     {
-
+                                        if ($stories['hidden']==0 || $userStatus){
                                         ?>
                                             <div class="card swiper-slide" >
                                                 <div class="card-body-due">
@@ -147,7 +147,7 @@
                                         <?php
 
 
-
+                                        }
                                     }
                                         
 

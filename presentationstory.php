@@ -9,7 +9,7 @@
             if(isset($_GET['S_ID']))
             {
 
-                $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur  FROM stories WHERE S_ID =:NUMBERS";
+                $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  FROM stories WHERE S_ID =:NUMBERS";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("NUMBERS"=>$_GET['S_ID']));
                 $readStoryInfo=$response->fetch()
@@ -35,6 +35,15 @@
                 <h3><?=$readStoryInfo['create_date']?></h3>
                 <h3><?=$readStoryInfo['auteur']?></h3>
                 <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
+
+                <?php
+                if ($readStoryInfo['hidden']==0){?>
+                    <span class="tag tag-green">Histoire disponible</span>
+                <?php }
+                else{ ?>
+                    <span class="tag tag-red">Histoire cachée</span>
+                <?php }
+                ?>
             </div>
             <img src="img/logo.png" width="300" height="300"/>
 
@@ -49,7 +58,14 @@
         <div class="contactbutton">
             <a href="/"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
             <a href="/"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
-            <a href="/"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
+            <?php
+            if ($readStoryInfo['hidden']==0){?>
+                <a href="functions/hidden.php?info=0&S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
+            <?php }
+             else{ ?>
+                 <a href="functions/hidden.php?info=1&S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Remettre l'histoire</button></a>
+            <?php }
+            ?>
             <a href="/"><button class="bn632-hover bn25">Supprimer l'histoire</button></a>
         </div>
         <?php }
