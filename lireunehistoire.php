@@ -55,7 +55,7 @@
                                                 <?=$readStoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a>
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -126,7 +126,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -193,7 +193,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -261,7 +261,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -332,7 +332,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -404,7 +404,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>
@@ -472,7 +472,7 @@
                                                 <?=$StoryInfo['title']?>
                                             </h3>
                                         </div>
-                                        <a href="">
+                                        <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <img src="<?=$StoryInfo['picture']?>" alt="<?=$StoryInfo['tag']?>" />
                                             </div>

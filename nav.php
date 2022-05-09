@@ -12,7 +12,7 @@ function secure($user_input)
             <a href="index.php" class="w-nav-brand"><img width="50" src="img/logo.png"></a>
             <nav class="nav-menu w-nav-menu">
 
-                <a href="read.php" class="link link--metis">
+                <a href="lireunehistoire.php" class="link link--metis">
                     <div class="textwrapper2">
                         <div class="up">
                             Lire une histoire

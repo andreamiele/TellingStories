@@ -54,7 +54,7 @@
         </div>
         <?php } ?>
         <div class="contactbutton">
-            <button onclick="clickrandom()" class="bn632-hover-2 bn19">Lire l'histoire</button>
+            <a href="read.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
         </div>
 
     </div>
