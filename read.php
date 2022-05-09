@@ -8,6 +8,16 @@
         {
         if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
         {
+            if ($_GET['P_ID']==1){
+                $Requete="UPDATE stories
+                    SET vues=vues+1
+                    WHERE S_ID=:SID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "SID"=>secure($_GET['S_ID'])
+                    ));
+            }
         array_push($_SESSION['chemin'],$_GET['P_ID']);
         $Requete="SELECT P_ID,text,Suite,nbTrophee  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
         $response = $BDD->prepare($Requete);
