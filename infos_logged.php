@@ -1,5 +1,12 @@
 <?php include("entete.php") ?>
-<?php include("nav.php") ?>
+<?php include("nav.php");
+
+$Requete="SELECT * FROM USERS WHERE login=:LOGIN";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
+            $users=$response->fetch();
+
+?>
 
 <div class="conteneurpage" data-scroll-section>
     <div class="emballage">
@@ -46,9 +53,9 @@
 
                 <div class="div-block-5">
 
-                    Nombre d'histoires jouées :
-                    </br>Nombre de victoires :
-                    </br>Nombre de défaites :
+                    <b>Nombre d'histoires jouées :</b> <?= $users["Played"] ?>
+                    <b></br>Nombre de victoires :</b> <?= $users["Won"] ?>
+                    <b></br>Nombre de défaites :</b><?= $users["Lost"] ?>
 
                 </div>
             <div class="div-block-5">

@@ -39,35 +39,42 @@
                                 <div class="container swiper" >
                                     <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                         <?php
-                                        $Requete="SELECT S_ID FROM advancement WHERE User_iD=(SELECT User_iD FROM users WHERE login=:LOGIN )";
+                                        $Requete="SELECT * FROM stories";
+
                                         $response = $BDD->prepare($Requete);
-                                        $response->execute(array("LOGIN"=>$_SESSION['login']));
-                                        while($readStories=$response->fetch())
+                                        $response->execute();
+
+
+                                        $userStatus = logged_admin($BDD);
+                                        while($stories=$response->fetch())
                                         {
-                                            $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
-                                            $response = $BDD->prepare($Requete);
-                                            $response->execute(array("NUMBERS"=>$readStories['S_ID']));
-                                            while($readStoryInfo=$response->fetch())
-                                            {
-                                        ?>
+                                            $Requete="SELECT COUNT(*) as nb FROM marquage WHERE U_ID=:UID AND S_ID=:SID";
+
+                                            $response2 = $BDD->prepare($Requete);
+                                            $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
+                                            $count=$response2->fetch();
+
+                                            if ($stories['hidden']==0 || $userStatus){
+                                                if($count['nb']!=0){
+                                                ?>
                                                 <div class="card swiper-slide" >
                                                     <div class="card-body-due">
                                                         <h3>
-                                                            <?=$readStoryInfo['title']?>
+                                                            <?=$stories['title']?>
                                                         </h3>
                                                     </div>
-                                                    <a href="">
+                                                    <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                         <div class="card-header">
                                                             <?php
-                                                            if ($readStoryInfo['picture']!=null){?><img src="images/<?=$readStoryInfo['picture']?><?php }
-                                                            else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$readStoryInfo['tag']?>" />
+                                                            if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                            else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                                         </div>
                                                     </a>
                                                     <div class="card-body">
                                                         <p>
-                                                            <?=$readStoryInfo['desc']?>
+                                                            <?=$stories['desc']?>
                                                         </p>
-                                                        <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
+                                                        <span class="tag tag-teal"><?=$stories['tag']?></span>
                                                         <!--
                                                         <div class="user">
                                                             <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -79,11 +86,16 @@
                                                         -->
                                                     </div>
                                                 </div>
-                                            <?php
-                                            }
-                                        }
-                                            ?>
+                                                <?php
 
+
+                                                }
+                                            }
+
+                                        }
+
+
+                                        ?>
                                     </div>
                                     <!-- If we need navigation buttons -->
                                     <div class="swiper-button-prev" data-scroll data-scroll-speed="1"></div>

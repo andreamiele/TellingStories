@@ -8,10 +8,6 @@
         {
         if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
         {
-
-
-
-
             if ($_GET['P_ID']==1){
                 $Requete="UPDATE stories
                     SET vues=vues+1
@@ -21,8 +17,16 @@
                     array(
                         "SID"=>secure($_GET['S_ID'])
                     ));
-            }
 
+                $Requete="UPDATE users
+                    SET Played=Played+1
+                    WHERE User_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "UID"=>secure($_SESSION['U_ID'])
+                    ));
+            }
 
 
                 $Requete="UPDATE marquage
@@ -105,6 +109,16 @@
                     "UID"=>secure($_SESSION['U_ID'])
                 ));
 
+
+
+                $Requete="UPDATE users
+                    SET Won=Won+1
+                    WHERE User_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "UID"=>secure($_SESSION['U_ID'])
+                    ));
             ?>
 
                 <div class="accueilsection">
@@ -144,6 +158,16 @@
             } // If victoire
             elseif($readStoryInfo['Suite']==1) // DEFAITE
             {
+                $Requete="UPDATE users
+                    SET Lost=Lost+1
+                    WHERE User_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "UID"=>secure($_SESSION['U_ID'])
+                    ));
+
+
                 $Requete = "DELETE FROM marquage 
                     WHERE 
                     S_ID=:SID
@@ -153,6 +177,9 @@
                     "SID"=>secure($_GET['S_ID']),
                     "UID"=>secure($_SESSION['U_ID'])
                 ));
+
+
+
         ?>
                 <div class="accueilsection">
                     <h1 class="accueiltitrelivre">
