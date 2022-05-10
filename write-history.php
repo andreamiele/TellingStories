@@ -19,7 +19,7 @@ if(logged($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="stripe-login" method="POST" action="ajout_histoire.php">
+                    <form id="stripe-login" method="POST" action="ajout_histoire.php" enctype="multipart/form-data">
                         <div class="field padding-bottom--24">
                             <label for="titre">Titre</label>
                             <input type="text" name="titre" id ="titre">

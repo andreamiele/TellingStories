@@ -58,7 +58,9 @@
                                                 </div>
                                                 <a href="">
                                                     <div class="card-header">
-                                                        <img src="<?=$readStoryInfo['picture']?>" alt="<?=$readStoryInfo['tag']?>" />
+                                                        <?php
+                                                        if ($readStoryInfo['picture']!=null){?><img src="images/<?=$readStoryInfo['picture']?><?php }
+                                                        else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$readStoryInfo['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
@@ -125,15 +127,9 @@
                                                 </div>
                                                 <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                     <div class="card-header">
-                                                        <img src="<?php
-                                                        if ($stories['picture']!=null){?>
-                                                        <?=$stories['picture']?>
-
-                                                        <?php }
-                                                        else{ ?>
-                                                        https://picsum.photos/200/300
-                                                        <?php }
-                                                        ?>" alt="<?=$stories['tag']?>" />
+                                                        <?php
+                                                        if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                        else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
@@ -201,15 +197,9 @@
                                                 </div>
                                                 <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                     <div class="card-header">
-                                                        <img src="<?php
-                                                        if ($stories['picture']!=null){?>
-                                                        <?=$stories['picture']?>
-
-                                                        <?php }
-                                                        else{ ?>
-                                                        https://picsum.photos/200/300
-                                                        <?php }
-                                                        ?>" alt="<?=$stories['tag']?>" />
+                                                        <?php
+                                                        if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                        else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
@@ -277,15 +267,9 @@
                                                 </div>
                                                 <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                     <div class="card-header">
-                                                        <img src="<?php
-                                                        if ($stories['picture']!=null){?>
-                                                        <?=$stories['picture']?>
-
-                                                        <?php }
-                                                        else{ ?>
-                                                        https://picsum.photos/200/300
-                                                        <?php }
-                                                        ?>" alt="<?=$stories['tag']?>" />
+                                                        <?php
+                                                        if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                        else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
