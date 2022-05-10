@@ -1,5 +1,4 @@
-<?php
-include('entete.php');
+<?php include('entete.php');
 include('nav.php');
     if(isset($_POST['login']) && isset($_POST['Password']))
     {
@@ -8,6 +7,12 @@ include('nav.php');
         if(logged($BDD))
         {
             $_SESSION['connecte']=true;
+            $Requete="SELECT * FROM USERS WHERE login=:LOGIN";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
+            $readStoryInfo=$response->fetch();
+            $_SESSION['U_ID']=$readStoryInfo['User_ID'];
+
             header("Location:index.php", TRUE, 301);
             exit();
         }

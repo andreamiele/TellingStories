@@ -2,13 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Telling Stories</title>
         <link href="style.css" rel="stylesheet">
         <link rel="stylesheet" href="base.css">
         <link
             rel="stylesheet"
             href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
         />
+        <link rel="icon" href="img/logo.png">
         <link rel="stylesheet" href="flowbite.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

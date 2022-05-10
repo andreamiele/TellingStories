@@ -8,6 +8,10 @@
         {
         if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
         {
+
+
+
+
             if ($_GET['P_ID']==1){
                 $Requete="UPDATE stories
                     SET vues=vues+1
@@ -18,6 +22,22 @@
                         "SID"=>secure($_GET['S_ID'])
                     ));
             }
+
+
+
+                $Requete="UPDATE marquage
+                    SET P_ID=:PID
+                    WHERE S_ID=:SID
+                    AND U_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                            "PID"=>secure($_GET['P_ID']),
+                        "SID"=>secure($_GET['S_ID']),
+                        "UID"=>secure($_SESSION['U_ID'])
+                    ));
+
+
         array_push($_SESSION['chemin'],$_GET['P_ID']);
         $Requete="SELECT P_ID,text,Suite,nbTrophee  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
         $response = $BDD->prepare($Requete);
@@ -75,7 +95,18 @@
             } // If continuer
             elseif($readStoryInfo['Suite']==0) // VICTOIRE
             {
+                $Requete = "DELETE FROM marquage 
+                    WHERE 
+                    S_ID=:SID
+                    AND U_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(array(
+                    "SID"=>secure($_GET['S_ID']),
+                    "UID"=>secure($_SESSION['U_ID'])
+                ));
+
             ?>
+
                 <div class="accueilsection">
                     <h1 class="accueiltitrelivre">
                         VICTOIRE
@@ -113,6 +144,15 @@
             } // If victoire
             elseif($readStoryInfo['Suite']==1) // DEFAITE
             {
+                $Requete = "DELETE FROM marquage 
+                    WHERE 
+                    S_ID=:SID
+                    AND U_ID=:UID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(array(
+                    "SID"=>secure($_GET['S_ID']),
+                    "UID"=>secure($_SESSION['U_ID'])
+                ));
         ?>
                 <div class="accueilsection">
                     <h1 class="accueiltitrelivre">

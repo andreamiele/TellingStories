@@ -37,54 +37,54 @@
                                     <h2 data-scroll data-scroll-speed="1">Histoires commencées</h2>
                                 </div>
                                 <div class="container swiper" >
-                                <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
-                                    <?php
-                                    $Requete="SELECT S_ID FROM advancement WHERE User_iD=(SELECT User_iD FROM users WHERE login=:LOGIN )";
-                                    $response = $BDD->prepare($Requete);
-                                    $response->execute(array("LOGIN"=>$_SESSION['login']));
-                                    while($readStories=$response->fetch())
-                                    {
-                                        $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
-                                        $response = $BDD->prepare($Requete);
-                                        $response->execute(array("NUMBERS"=>$readStories['S_ID']));
-                                        while($readStoryInfo=$response->fetch())
-                                        {
-                                    ?>
-                                            <div class="card swiper-slide" >
-                                                <div class="card-body-due">
-                                                    <h3>
-                                                        <?=$readStoryInfo['title']?>
-                                                    </h3>
-                                                </div>
-                                                <a href="">
-                                                    <div class="card-header">
-                                                        <?php
-                                                        if ($readStoryInfo['picture']!=null){?><img src="images/<?=$readStoryInfo['picture']?><?php }
-                                                        else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$readStoryInfo['tag']?>" />
-                                                    </div>
-                                                </a>
-                                                <div class="card-body">
-                                                    <p>
-                                                        <?=$readStoryInfo['desc']?>
-                                                    </p>
-                                                    <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
-                                                    <!--
-                                                    <div class="user">
-                                                        <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
-                                                        <div class="user-info">
-                                                            <h5>July Dec</h5>
-                                                            <small>2h ago</small>
-                                                        </div>
-                                                    </div>
-                                                    -->
-                                                </div>
-                                            </div>
+                                    <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                         <?php
-                                        }
-                                    }
+                                        $Requete="SELECT S_ID FROM advancement WHERE User_iD=(SELECT User_iD FROM users WHERE login=:LOGIN )";
+                                        $response = $BDD->prepare($Requete);
+                                        $response->execute(array("LOGIN"=>$_SESSION['login']));
+                                        while($readStories=$response->fetch())
+                                        {
+                                            $Requete="SELECT title, `desc`, picture, tag, S_ID FROM stories WHERE S_ID =:NUMBERS";
+                                            $response = $BDD->prepare($Requete);
+                                            $response->execute(array("NUMBERS"=>$readStories['S_ID']));
+                                            while($readStoryInfo=$response->fetch())
+                                            {
                                         ?>
+                                                <div class="card swiper-slide" >
+                                                    <div class="card-body-due">
+                                                        <h3>
+                                                            <?=$readStoryInfo['title']?>
+                                                        </h3>
+                                                    </div>
+                                                    <a href="">
+                                                        <div class="card-header">
+                                                            <?php
+                                                            if ($readStoryInfo['picture']!=null){?><img src="images/<?=$readStoryInfo['picture']?><?php }
+                                                            else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$readStoryInfo['tag']?>" />
+                                                        </div>
+                                                    </a>
+                                                    <div class="card-body">
+                                                        <p>
+                                                            <?=$readStoryInfo['desc']?>
+                                                        </p>
+                                                        <span class="tag tag-teal"><?=$readStoryInfo['tag']?></span>
+                                                        <!--
+                                                        <div class="user">
+                                                            <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
+                                                            <div class="user-info">
+                                                                <h5>July Dec</h5>
+                                                                <small>2h ago</small>
+                                                            </div>
+                                                        </div>
+                                                        -->
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+                                            ?>
 
-                                </div>
+                                    </div>
                                     <!-- If we need navigation buttons -->
                                     <div class="swiper-button-prev" data-scroll data-scroll-speed="1"></div>
                                     <div class="swiper-button-next" data-scroll data-scroll-speed="1"></div>

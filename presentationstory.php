@@ -90,11 +90,32 @@
         $_SESSION['chemin']=array();
         ?>
         <div class="contactbutton">
-            <a href="read.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
+            <!-- CHECK SI L4HISTOIRE EST COMMENCEE OU NON -->
+
+
+
+            <?php $Requete="SELECT * FROM MARQUAGE WHERE U_ID=:UID AND S_ID=:SID";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
+            $readStoryInfo=$response->fetch();
+
+            $Requete="SELECT COUNT(*) as nb FROM MARQUAGE WHERE U_ID=:UID AND S_ID=:SID";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
+            $Informations=$response->fetch();
+            if ($Informations['nb']==0){
+            ?>
+
+            <a href="functions/creer_marquepage.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
         </div>
 
     </div>
-    <?php }
+    <?php } else{ ?>
+        <a href="read.php?S_ID=<?=$_GET['S_ID']?>&P_ID=<?=$readStoryInfo['P_ID']?>"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
+
+
+           <?php }
+            }
         }
         else
         {
