@@ -35,7 +35,7 @@ $Requete="SELECT * FROM USERS WHERE login=:LOGIN";
             </div>
         </div>
 
-        <div class="card-history" data-scroll data-scroll-speed="1">
+        <div class="card-history2" data-scroll data-scroll-speed="1">
         <div class="accueilrang-el-ments centre">
 
                 <div class="div-block-5">
@@ -53,9 +53,9 @@ $Requete="SELECT * FROM USERS WHERE login=:LOGIN";
 
                 <div class="div-block-5">
 
-                    <b>Nombre d'histoires jouées :</b> <?= $users["Played"] ?>
-                    <b></br>Nombre de victoires :</b> <?= $users["Won"] ?>
-                    <b></br>Nombre de défaites :</b><?= $users["Lost"] ?>
+                    <b>Nombre d'histoires jouées :</b> <?php echo $users["Played"] ?>
+                    <b>Nombre de victoires :</b> <?php echo $users["Won"] ?>
+                    <b>Nombre de défaites :</b><?php echo $users["Lost"] ?>
 
                 </div>
             <div class="div-block-5">
