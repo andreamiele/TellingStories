@@ -1,11 +1,13 @@
 <?php include("entete.php") ?>
 <?php include("nav.php");
 
-$Requete="SELECT * FROM USERS WHERE login=:LOGIN";
+if(logged($BDD))
+{
+$Requete="SELECT * FROM USERS 
+            WHERE login=:LOGIN";
             $response = $BDD->prepare($Requete);
             $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
             $users=$response->fetch();
-
 ?>
 
 <div class="conteneurpage" data-scroll-section>
@@ -99,4 +101,19 @@ $Requete="SELECT * FROM USERS WHERE login=:LOGIN";
 
         }
     </script>
-<?php include("footer.php") ?>
+<?php
+}else{ ?>
+    <div class="conteneurpage" data-scroll-section>
+        <div class="emballage">
+            <div class="accueilsection">
+                <h1 class="accueiltitrelivre">
+                    Veuillez vous connecter.
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+<?php }
+
+    include("footer.php") ?>
