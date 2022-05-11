@@ -6,7 +6,7 @@ function logged($BDD)
         $response = $BDD->prepare($Requete);
         $response->execute(array(
             "LOGIN" => $_SESSION['login'],
-            "PASSWORD"=> $_SESSION['password']
+            "PASSWORD"=> password_hash($_SESSION['password'],PASSWORD_BCRYPT)
         ));
         while($_COOKIE=$response->fetch())
         {
@@ -34,7 +34,7 @@ function logged_admin($BDD)
         $response = $BDD->prepare($Requete);
         $response->execute(array(
             "LOGIN" => $_SESSION['login'],
-            "PASSWORD"=> $_SESSION['password']
+            "PASSWORD"=> password_hash($_SESSION['password'],PASSWORD_BCRYPT)
         ));
         while($_COOKIE=$response->fetch())
         {

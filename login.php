@@ -12,7 +12,6 @@ include('nav.php');
             $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
             $readStoryInfo=$response->fetch();
             $_SESSION['U_ID']=$readStoryInfo['User_ID'];
-
             header("Location:index.php", TRUE, 301);
             exit();
         }
