@@ -62,5 +62,27 @@ if(logged($BDD))
     </div>
     <?php
 }
-}
+    else{ ?>
+        <div class="conteneurpage" data-scroll-section>
+            <div class="emballage">
+                <div class="accueilsection">
+                    <h1 class="accueiltitrelivre">
+                        Modifier histoire - Veuillez clicker sur une histoire
+                    </h1>
+                </div>
+            </div>
+        </div>
+    <?php }
+} else{ ?>
+    <div class="conteneurpage" data-scroll-section>
+        <div class="emballage">
+            <div class="accueilsection">
+                <h1 class="accueiltitrelivre">
+                    Modifier histoire - Veuillez vous connecter
+                </h1>
+            </div>
+        </div>
+    </div>
+
+<?php }
 include("footer.php"); ?>
