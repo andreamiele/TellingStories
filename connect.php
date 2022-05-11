@@ -2,15 +2,14 @@
 function logged($BDD)
 { if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
-        $Requete="SELECT COUNT(*) as nb FROM users WHERE login=:LOGIN AND password=:PASSWORD";
+        $Requete="SELECT * FROM users WHERE login=:LOGIN";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
-            "LOGIN" => $_SESSION['login'],
-            "PASSWORD"=> password_hash($_SESSION['password'],PASSWORD_BCRYPT)
+            "LOGIN" => $_SESSION['login']
         ));
         while($_COOKIE=$response->fetch())
         {
-            if($_COOKIE['nb']==1)
+            if(password_verify($_SESSION['password'],$_COOKIE['password']))
             {
                 $Requete="SELECT `Nom`, Prenom,nbTrophees FROM users WHERE login=:LOGIN";
                 $response = $BDD->prepare($Requete);
@@ -30,15 +29,14 @@ function logged_admin($BDD)
 {
     if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
-        $Requete="SELECT COUNT(*) as admin_nb FROM users WHERE login=:LOGIN AND password=:PASSWORD AND admin=1";
+        $Requete="SELECT `password` as pass FROM users WHERE login=:LOGIN AND admin=1";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
-            "LOGIN" => $_SESSION['login'],
-            "PASSWORD"=> password_hash($_SESSION['password'],PASSWORD_BCRYPT)
+            "LOGIN" => $_SESSION['login']
         ));
         while($_COOKIE=$response->fetch())
         {
-            if($_COOKIE['admin_nb']==1)
+            if(password_verify($_SESSION['password'],$_COOKIE['password']))
             {
             return true;
             }
