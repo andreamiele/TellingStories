@@ -48,7 +48,11 @@
                                     $response2 = $BDD->prepare($Requete);
                                     $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
                                     $count=$response2->fetch();
+                                    $Requete="SELECT * FROM marquage WHERE U_ID=:UID AND S_ID=:SID";
 
+                                    $response2 = $BDD->prepare($Requete);
+                                    $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
+                                    $infos=$response2->fetch();
                                     if ($stories['hidden']==0 || $userStatus){
                                         if($count['nb']!=0){
                                             ?>
@@ -69,7 +73,8 @@
                                                     <p>
                                                         <?=$stories['desc']?>
                                                     </p>
-                                                    <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                                    <span class="tag tag-orange">Avancement : <?=$infos['P_ID']?></span>
+                                                    <span><?=$stories['vues']?> vue(s)</span>
                                                     <!--
                                                     <div class="user">
                                                         <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -144,6 +149,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -214,6 +220,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -284,6 +291,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />

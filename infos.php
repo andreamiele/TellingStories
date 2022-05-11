@@ -40,7 +40,7 @@
             <div class="headingline" data-scroll data-scroll-speed="1"></div>
             <h2 data-scroll data-scroll-speed="1">Téléchargement</h2>
                 </div>
-            <p class="paragrapheu">
+            <p class="paragrapheu" data-scroll data-scroll-speed="1">
 
                     <button onclick="window.open('enonce.pdf')" type="button" class="bn632-hover bn22">Enoncé</button>
                 <button onclick="window.open('rapport.pdf')" type="button" class="bn632-hover bn22">Rapport</button>

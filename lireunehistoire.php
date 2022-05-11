@@ -66,6 +66,7 @@
                                                     <?=$stories['desc']?>
                                                 </p>
                                                 <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                                <span><?=$stories['vues']?> vue(s)</span>
                                                 <!--
                                                 <div class="user">
                                                     <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -140,6 +141,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -211,6 +213,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -283,6 +286,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -358,6 +362,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -434,6 +439,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
@@ -506,6 +512,7 @@
                                                 <?=$stories['desc']?>
                                             </p>
                                             <span class="tag tag-teal"><?=$stories['tag']?></span>
+                                            <span><?=$stories['vues']?> vue(s)</span>
                                             <!--
                                             <div class="user">
                                                 <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />
