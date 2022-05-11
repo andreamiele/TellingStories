@@ -39,7 +39,7 @@ if(logged($BDD))
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="couverture">Couverture</label>
-                            <input type="file" name="couverture" id ="couverture" value="<?= $readStoryInfo['couverture']?>">
+                            <input type="file" name="couverture" id ="couverture">
                         </div>
                         <div class="field padding-bottom--24">
                             <label for="auteur">Auteur</label>
