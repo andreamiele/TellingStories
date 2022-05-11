@@ -105,6 +105,7 @@
             $response = $BDD->prepare($Requete);
             $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
             $Informations=$response->fetch();
+            $_SESSION['paragraphe']=1;
             if ($Informations['nb']==0){
             ?>
 
@@ -112,8 +113,9 @@
         </div>
 
     </div>
-    <?php } else{ ?>
-        <a href="read.php?S_ID=<?=$_GET['S_ID']?>&P_ID=<?=$readStoryInfo['P_ID']?>"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
+    <?php } else{ $_SESSION['paragraphe']=$readStoryInfo['P_ID'];
+        $_SESSION['paragraphes']=array($_SESSION['paragraphe']);?>
+        <a href="read.php?S_ID=<?=$_GET['S_ID']?>&id=0"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
 
 
            <?php }
