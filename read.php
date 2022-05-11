@@ -44,14 +44,18 @@
                         "SID"=>secure($_GET['S_ID']),
                         "UID"=>secure($_SESSION['U_ID'])
                     ));
-
-
+            $Requete="SELECT * FROM `STORIES` WHERE S_ID=:ID";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("ID"=>$_GET['S_ID']));
+            $Hidden=$response->fetch();
+            $hide=$Hidden['hidden'];
         array_push($_SESSION['chemin'],$_SESSION['paragraphe']);
         $Requete="SELECT P_ID,text,Suite,nbTrophee  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
         $response = $BDD->prepare($Requete);
         $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_SESSION['paragraphe']));
         $readStoryInfo=$response->fetch();
         $_SESSION['nbTrophee']+=$readStoryInfo['nbTrophee'];
+        if ($hide==0){
             if ($readStoryInfo['Suite']==2) // Continuer
             {
         ?>
@@ -226,7 +230,12 @@
 
                 <?php
             } // If Défaite
-        } // Isset
+        }
+        else
+        {?>
+            <div>C'est po gentil de faire le bazard ici madge.</div>
+       <?php }
+        }// Isset
         } // Logged BDD
         ?>
     </div>
