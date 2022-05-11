@@ -6,9 +6,13 @@
         <?php
         if(logged($BDD))
         {
-        if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
+        if(isset($_GET['S_ID']) && isset($_SESSION['paragraphes']) && isset($_GET['id']) && $_SESSION['paragraphe'])
         {
-            if ($_GET['P_ID']==1){
+            $numeropag = $_SESSION['paragraphes'][$_GET['id']];
+            $_SESSION['paragraphe']=$numeropag;
+
+            if ($_SESSION['paragraphe']==1)
+            {
                 $Requete="UPDATE stories
                     SET vues=vues+1
                     WHERE S_ID=:SID";
@@ -36,18 +40,22 @@
                 $response = $BDD->prepare($Requete);
                 $response->execute(
                     array(
-                            "PID"=>secure($_GET['P_ID']),
+                            "PID"=>secure($_SESSION['paragraphe']),
                         "SID"=>secure($_GET['S_ID']),
                         "UID"=>secure($_SESSION['U_ID'])
                     ));
-
-
-        array_push($_SESSION['chemin'],$_GET['P_ID']);
+            $Requete="SELECT * FROM `STORIES` WHERE S_ID=:ID";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("ID"=>$_GET['S_ID']));
+            $Hidden=$response->fetch();
+            $hide=$Hidden['hidden'];
+        array_push($_SESSION['chemin'],$_SESSION['paragraphe']);
         $Requete="SELECT P_ID,text,Suite,nbTrophee  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID =:NUMBERS2";
         $response = $BDD->prepare($Requete);
-        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
+        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_SESSION['paragraphe']));
         $readStoryInfo=$response->fetch();
         $_SESSION['nbTrophee']+=$readStoryInfo['nbTrophee'];
+        if ($hide==0){
             if ($readStoryInfo['Suite']==2) // Continuer
             {
         ?>
@@ -82,20 +90,26 @@
 
         $Requete="SELECT ID_ARRIVEE,NOM_ACTION  FROM actions WHERE S_ID =:NUMBERS AND ID_DEPART =:NUMBERS2";
         $response = $BDD->prepare($Requete);
-        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
+        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_SESSION['paragraphe']));
 
-
+        $i=0;
+        $_SESSION['paragraphes']=array();
         while($ActionInfo=$response->fetch())
         {
+            /*$_SESSION['paragraphe']=$ActionInfo['ID_ARRIVEE'];*/
 
+
+            array_push($_SESSION['paragraphes'],$ActionInfo['ID_ARRIVEE']);
         ?>
             <div class="contactbutton">
-                <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&P_ID=<?=$ActionInfo['ID_ARRIVEE']?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
+
+                    <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&id=<?=$i?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
             </div>
             <div class="contactbutton">
                 <button onclick="clickrandom()" class="bn632-hover-2 bn19">Hasard !</button>
             </div>
-        <?php }
+        <?php $i=$i+1;
+        }
             } // If continuer
             elseif($readStoryInfo['Suite']==0) // VICTOIRE
             {
@@ -216,7 +230,12 @@
 
                 <?php
             } // If Défaite
-        } // Isset
+        }
+        else
+        {?>
+            <div>C'est po gentil de faire le bazard ici madge.</div>
+       <?php }
+        }// Isset
         } // Logged BDD
         ?>
     </div>

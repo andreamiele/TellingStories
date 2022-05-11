@@ -23,9 +23,10 @@ if(logged($BDD))
     }
 }
 
+$_SESSION['paragraphe']=1;
+$_SESSION['paragraphes']=array($_SESSION['paragraphe']);
 
-
-$location = "Location: ../read.php?S_ID=".$_GET['S_ID']."&P_ID=".$_GET['P_ID'];
+$location = "Location: ../read.php?S_ID=".$_GET['S_ID']."&id=0";
 header( $location);
 exit();
 
