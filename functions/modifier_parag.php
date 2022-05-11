@@ -11,47 +11,98 @@ if(logged($BDD))
 {
     if (isset($_GET['S_ID'])&&isset($_GET['P_ID']))
     {
-        if (logged_admin($BDD))
-        {
-            $Requete = "UPDATE paragraphs 
+        if (logged_admin($BDD)) {
+            if ($_FILES["image"]["type"] != "") {
+                $image = basename($_FILES['image']['name']);
+                $dossier = 'images/paragraphs';
+                $extensions = array('.png', '.gif', '.jpg', '.jpeg');
+                $extension = strrchr($_FILES["image"]['name'], '.');
+                if (!in_array($extension, $extensions)) {
+                    $erreur = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...';
+                }
+
+                if (!isset($erreur)) {
+                    //deuxieme requete : Création de l'histoire dans la BDD
+                    $fichier = $_FILES["image"]['name'];
+                    if (move_uploaded_file($_FILES["image"]['tmp_name'], $dossier . $fichier)) {
+                        $Requete = "UPDATE paragraphs 
                         SET text=:TEXT, 
                             image=:IMAGE, 
                             sound=:SOUND,
                             Suite=:SUITE, 
                             nbTrophee=:NBTROPHEE
                         WHERE S_ID=:SID AND P_ID=:PID";
-            $response = $BDD->prepare($Requete);
-            $response->execute(
-                array(
-                    "TEXT" => secure($_POST['text']),
-                    "IMAGE" => secure($_POST['image']),
-                    "SOUND" => secure($_POST['sound']),
-                    "NBTROPHEE" => secure($_POST['trophee']),
-                    "SUITE" => secure($_POST['select']),
-                    "SID" => secure($history),
-                    "PID" => secure($parag)
-                ));
+                        $response = $BDD->prepare($Requete);
+                        $response->execute(
+                            array(
+                                "TEXT" => secure($_POST['text']),
+                                "IMAGE" => secure($image),
+                                "SOUND" => secure($_POST['sound']),
+                                "NBTROPHEE" => secure($_POST['trophee']),
+                                "SUITE" => secure($_POST['select']),
+                                "SID" => secure($history),
+                                "PID" => secure($parag)
+                            ));
 
 
-            for ($i = 0; $i < count($_POST['action']); $i++)
-            {
-                if ($i % 2 == 0)
-                {
-                    $A = $_POST['action'][$i];
-                    $B = $_POST['action'][$i + 1];
-                    $R = "DELETE FROM actions 
+                        for ($i = 0; $i < count($_POST['action']); $i++) {
+                            if ($i % 2 == 0) {
+                                $A = $_POST['action'][$i];
+                                $B = $_POST['action'][$i + 1];
+                                $R = "DELETE FROM actions 
                             WHERE 
                                   `S_ID`=:NUM AND 
                                   ID_DEPART=:DEP";
-                    $response = $BDD->prepare($R);
-                    $response->execute(array("DEP" => secure($parag), "NUM" => secure($history)));
+                                $response = $BDD->prepare($R);
+                                $response->execute(array("DEP" => secure($parag), "NUM" => secure($history)));
 
-                    $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+                                $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
-                    $response = $BDD->prepare($Requete);
-                    $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($history)));
+                                $response = $BDD->prepare($Requete);
+                                $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($history)));
+                            }
+                        }
+                    }
                 }
             }
+            else {
+                $Requete = "UPDATE paragraphs 
+                        SET text=:TEXT, 
+                            sound=:SOUND,
+                            Suite=:SUITE, 
+                            nbTrophee=:NBTROPHEE
+                        WHERE S_ID=:SID AND P_ID=:PID";
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "TEXT" => secure($_POST['text']),
+                        "SOUND" => secure($_POST['sound']),
+                        "NBTROPHEE" => secure($_POST['trophee']),
+                        "SUITE" => secure($_POST['select']),
+                        "SID" => secure($history),
+                        "PID" => secure($parag)
+                    ));
+
+
+                for ($i = 0; $i < count($_POST['action']); $i++) {
+                    if ($i % 2 == 0) {
+                        $A = $_POST['action'][$i];
+                        $B = $_POST['action'][$i + 1];
+                        $R = "DELETE FROM actions 
+                            WHERE 
+                                  `S_ID`=:NUM AND 
+                                  ID_DEPART=:DEP";
+                        $response = $BDD->prepare($R);
+                        $response->execute(array("DEP" => secure($parag), "NUM" => secure($history)));
+
+                        $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+
+                        $response = $BDD->prepare($Requete);
+                        $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($history)));
+                    }
+                }
+            }
+
         }
     }
 }

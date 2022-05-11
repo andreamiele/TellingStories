@@ -6,6 +6,8 @@
         <?php
         if(logged($BDD))
         {
+        if (isset($_GET['S_ID']))
+        {
             ?>
                     <div class="accueilsection">
                         <h1 class="accueiltitrelivre">
@@ -45,7 +47,7 @@
 
 
        <?php
-             // Isset
+        }   // Isset
         } // Logged BDD
         ?>
     </div>

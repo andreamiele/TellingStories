@@ -7,6 +7,8 @@ function secure($user_input)
     return $secure_input;
 }
 if (logged_admin($BDD)) {
+    if (isset($_GET['S_ID']))
+    {
     $history = secure($_GET['S_ID']);
     $Requete = "DELETE FROM stories WHERE `S_ID`=:NUM ;";
     $response = $BDD->prepare($Requete);
@@ -28,6 +30,7 @@ if (logged_admin($BDD)) {
     $Requete = "DELETE FROM marquage WHERE `S_ID`=:NUM;";
     $response = $BDD->prepare($Requete);
     $response->execute(array("NUM" => $history));
+    }
 }
 else{
 

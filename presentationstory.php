@@ -62,7 +62,7 @@
                 ?>
             </div>
             <?php
-            if ($readStoryInfo['picture']!=null){?><img width="300" height="300" src="images/<?=$readStoryInfo['picture']?><?php }
+            if ($readStoryInfo['picture']!=null){?><img width="300" height="300" src="images/couverture<?=$readStoryInfo['picture']?><?php }
             else{ ?><img width="300" height="300" src="https://picsum.photos/200/300<?php }?>" alt="<?=$readStoryInfo['tag']?>" />
 
 

@@ -7,16 +7,21 @@ function secure($user_input)
     return $secure_input;
 }
 $chemin ="";
-
-foreach($_SESSION['chemin'] as $valeur)
+if(logged($BDD))
 {
-    $chemin.=($valeur." ");
+    foreach($_SESSION['chemin'] as $valeur)
+    {
+        $chemin.=($valeur." ");
+    }
+
+    if (isset($_GET['S_ID']) && isset($_GET['P_ID'])) {
+
+        $Requete = "INSERT INTO MARQUAGE (U_ID,S_ID,P_ID,CHEMIN) VALUES (:U_ID, :S_ID, :P_ID, :CHEMIN);";
+        $response = $BDD->prepare($Requete);
+        $response->execute(array("U_ID" => secure($_SESSION['U_ID']), "P_ID" => secure($_GET['P_ID']), "S_ID" => secure($_GET['S_ID']), "CHEMIN" => secure($chemin)));
+
+    }
 }
-$Requete="INSERT INTO MARQUAGE (U_ID,S_ID,P_ID,CHEMIN) VALUES (:U_ID, :S_ID, :P_ID, :CHEMIN);";
-$response = $BDD->prepare($Requete);
-$response->execute(array("U_ID"=>secure($_SESSION['U_ID']),"P_ID"=>secure($_GET['P_ID']),"S_ID"=>secure($_GET['S_ID']), "CHEMIN"=>secure($chemin)));
-
-
 
 
 

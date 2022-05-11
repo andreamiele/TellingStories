@@ -15,7 +15,7 @@ if(logged($BDD))
             if ($_FILES["couverture"]["type"] != "")
             {
                 $image = basename($_FILES['couverture']['name']);
-                $dossier = 'images/';
+                $dossier = 'images/couverture';
                 $extensions = array('.png', '.gif', '.jpg', '.jpeg');
                 $extension = strrchr($_FILES["couverture"]['name'], '.');
                 if (!in_array($extension, $extensions))

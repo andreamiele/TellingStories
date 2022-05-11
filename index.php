@@ -61,7 +61,7 @@
                                                 <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                                     <div class="card-header">
                                                         <?php
-                                                        if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                        if ($stories['picture']!=null){?><img src="images/couverture<?=$stories['picture']?><?php }
                                                         else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                                     </div>
                                                 </a>
@@ -135,7 +135,7 @@
                                         <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <?php
-                                                if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                if ($stories['picture']!=null){?><img src="images/couverture<?=$stories['picture']?><?php }
                                                 else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                             </div>
                                         </a>
@@ -205,7 +205,7 @@
                                         <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <?php
-                                                if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                if ($stories['picture']!=null){?><img src="images/couverture<?=$stories['picture']?><?php }
                                                 else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                             </div>
                                         </a>
@@ -275,7 +275,7 @@
                                         <a href="presentationstory.php?S_ID=<?= $stories['S_ID'] ?>">
                                             <div class="card-header">
                                                 <?php
-                                                if ($stories['picture']!=null){?><img src="images/<?=$stories['picture']?><?php }
+                                                if ($stories['picture']!=null){?><img src="images/couverture<?=$stories['picture']?><?php }
                                                 else{ ?><img src="https://picsum.photos/200/300<?php }?>" alt="<?=$stories['tag']?>" />
                                             </div>
                                         </a>

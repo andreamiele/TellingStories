@@ -2,6 +2,8 @@
 include("nav.php");
 if(logged($BDD))
 {
+if (logged_admin($BDD))
+{
     if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
     {
 
@@ -134,7 +136,7 @@ else
 {
     echo "Access denied! You are not an administrator";
 }
-}
+}}
 else{?>
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
