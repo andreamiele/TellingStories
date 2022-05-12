@@ -37,7 +37,7 @@
                         <div class="container swiper" >
                             <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                 <?php
-                                $Requete="SELECT * FROM stories";
+                                $Requete="SELECT * FROM STORIES";
 
                                 $response = $BDD->prepare($Requete);
                                 $response->execute();
@@ -112,7 +112,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -184,7 +184,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -257,7 +257,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -333,7 +333,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -410,7 +410,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -483,7 +483,7 @@
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();

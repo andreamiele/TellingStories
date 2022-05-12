@@ -27,7 +27,7 @@ if(logged($BDD))
                         //deuxieme requete : Création de l'histoire dans la BDD
                         $fichier = $_FILES["image"]['name'];
                         if (move_uploaded_file($_FILES["image"]['tmp_name'], $dossier . $fichier)) {
-                            $Requete = "UPDATE paragraphs 
+                            $Requete = "UPDATE PARAGRAPHS
                             SET text=:TEXT, 
                                 image=:IMAGE, 
                                 sound=:SOUND,
@@ -51,14 +51,14 @@ if(logged($BDD))
                                 if ($i % 2 == 0) {
                                     $A = $_POST['action'][$i];
                                     $B = $_POST['action'][$i + 1];
-                                    $R = "DELETE FROM actions 
+                                    $R = "DELETE FROM ACTIONS 
                                 WHERE 
                                       `S_ID`=:NUM AND 
                                       ID_DEPART=:DEP";
                                     $response = $BDD->prepare($R);
                                     $response->execute(array("DEP" => secure($parag), "NUM" => secure($history)));
 
-                                    $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+                                    $Requete = "INSERT INTO ACTIONS (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                                     $response = $BDD->prepare($Requete);
                                     $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($history)));
@@ -67,7 +67,7 @@ if(logged($BDD))
                         }
                     }
                 } else {
-                    $Requete = "UPDATE paragraphs 
+                    $Requete = "UPDATE PARAGRAPHS 
                             SET text=:TEXT, 
                                 sound=:SOUND,
                                 Suite=:SUITE, 
@@ -89,14 +89,14 @@ if(logged($BDD))
                         if ($i % 2 == 0) {
                             $A = $_POST['action'][$i];
                             $B = $_POST['action'][$i + 1];
-                            $R = "DELETE FROM actions 
+                            $R = "DELETE FROM ACTIONS
                                 WHERE 
                                       `S_ID`=:NUM AND 
                                       ID_DEPART=:DEP";
                             $response = $BDD->prepare($R);
                             $response->execute(array("DEP" => secure($parag), "NUM" => secure($history)));
 
-                            $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+                            $Requete = "INSERT INTO ACTIONS (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($history)));

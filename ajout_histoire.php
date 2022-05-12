@@ -23,7 +23,7 @@ if(logged($BDD)) {
                     //deuxieme requete : Création de l'histoire dans la BDD
 
 
-                    $Requete = "INSERT INTO stories 
+                    $Requete = "INSERT INTO STORIES
             (title, `desc`, `tag`, `create_date`, picture, `auteur`, write_date) 
             VALUES (:TITLE, :DESCR, :TAG, :CREATE_DATE, :PIC, :AUTEUR, :WDATE);";
                     $response = $BDD->prepare($Requete);
@@ -43,7 +43,7 @@ if(logged($BDD)) {
                 echo $erreur;
             }
         } else {
-            $Requete = "INSERT INTO stories 
+            $Requete = "INSERT INTO STORIES 
             (title, `desc`  , `tag`, `create_date`, picture, `auteur`, write_date) 
             VALUES (:TITLE, :DESCR, :TAG, :CREATE_DATE, :PIC, :AUTEUR, :WDATE);";
             $response = $BDD->prepare($Requete);

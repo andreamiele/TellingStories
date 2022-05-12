@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 function logged($BDD)
 { if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
         $Requete="SELECT * 
-                    FROM users 
+                    FROM USERS
                     WHERE login=:LOGIN";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
@@ -14,7 +18,7 @@ function logged($BDD)
             if(password_verify($_SESSION['password'],$_COOKIE['password']))
             {
                 $Requete="SELECT `Nom`, Prenom,nbTrophees 
-                            FROM users 
+                            FROM USERS 
                             WHERE login=:LOGIN";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("LOGIN" => $_SESSION['login']));
@@ -34,7 +38,7 @@ function logged_admin($BDD)
     if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
         $Requete="SELECT `password` as pass 
-                    FROM users 
+                    FROM USERS 
                     WHERE login=:LOGIN AND 
                           admin=1";
         $response = $BDD->prepare($Requete);
@@ -52,8 +56,8 @@ function logged_admin($BDD)
     return false;
 }
 try {
-$BDD = new PDO( "mysql:host=localhost;dbname=histoires;charset=utf8",
-"blamirault","Benasa01", array(PDO::ATTR_ERRMODE
+$BDD = new PDO( "mysql:host=localhost;dbname=amiele;charset=utf8",
+"amiele","franchementosef", array(PDO::ATTR_ERRMODE
 =>PDO::ERRMODE_EXCEPTION));
 }
 # Résultat du form de login.php: $_POST['login'] et $_POST['password']
@@ -63,7 +67,7 @@ die('Erreur fatale : ' . $e->getMessage());
 
 function testHistory($BDD,$nb){
     $Requete="SELECT COUNT(*) as nb 
-                FROM stories 
+                FROM STORIES 
                 WHERE S_ID=:S_ID";
     $response = $BDD->prepare($Requete);
     $response->execute(array(

@@ -9,12 +9,12 @@ if (logged_admin($BDD))
         if (testHistory($BDD,$_GET['S_ID']))
         {
 
-    $Requete="SELECT text, back_image, image, sound, nbTrophee, Suite  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
+    $Requete="SELECT text, back_image, image, sound, nbTrophee, Suite  FROM PARAGRAPHS WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
     $response = $BDD->prepare($Requete);
     $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
     $readStoryInfo=$response->fetch();
 
-        $R = "SELECT COUNT(*) AS nb FROM paragraphs WHERE S_ID=:NUMBER";
+        $R = "SELECT COUNT(*) AS nb FROM PARAGRAPHS WHERE S_ID=:NUMBER";
     $r = $BDD->prepare($R);
         $r->execute(array("NUMBER"=>$_GET['S_ID']));
         $Count=$r->fetch();
@@ -82,7 +82,7 @@ if (logged_admin($BDD))
                         <div class="headingline2" ></div>
                         <?php
 
-        $Requete="SELECT ID_ARRIVEE,NOM_ACTION  FROM actions WHERE S_ID =:NUMBERS AND ID_DEPART =:NUMBERS2";
+        $Requete="SELECT ID_ARRIVEE,NOM_ACTION  FROM ACTIONS WHERE S_ID =:NUMBERS AND ID_DEPART =:NUMBERS2";
         $response = $BDD->prepare($Requete);
         $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
 
