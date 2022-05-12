@@ -10,6 +10,7 @@
             {
         if (testHistory($BDD,$_GET['S_ID']))
         {
+        $_SESSION['id_histoire']= secure($_GET['S_ID']);
                 $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  
                             FROM STORIES 
                             WHERE S_ID =:NUMBERS";
@@ -79,6 +80,7 @@
         <div class="contactbutton">
             <a href="modifypage.php?S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
             <a href="modifyparag.php?S_ID=<?=$_GET['S_ID']?>&P_ID=1"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
+            <a href="ajouterParagraph.php"><button class="bn632-hover bn25">Ajouter un paragraphe</button></a>
             <?php
             if ($readStoryInfo['hidden']==0){?>
                 <a href="functions/hidden.php?info=0&S_ID=<?=$_GET['S_ID']?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
@@ -115,6 +117,7 @@
             $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
             $Informations=$response->fetch();
             $_SESSION['paragraphe']=1;
+
             if ($Informations['nb']==0){
             ?>
 
@@ -142,30 +145,6 @@
 <!-- Mettre la valeur prévue dans le paragraphe en paramètre de la fonction-->
 
 <!-- Il faut mettre une valeur null ou inutilisé si on ne fait pas de random afin que je puisse faire un if / else -->
-<script>
-    function clickrandom(){
-        var result ="<?php random(); ?>"
-        document.write(result);
-    }
-</script>
 
-
-<!-- Mettre la valeur dans le paragraphe au lieu du x -->
-<?php function random($x){
-    rand(0,$x);
-}
-?>
-<script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-
-    }
-</script>
 <?php include("footer.php") ?>
 

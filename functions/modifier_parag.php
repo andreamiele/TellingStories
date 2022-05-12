@@ -16,7 +16,7 @@ if(logged($BDD))
             if (logged_admin($BDD)) {
                 if ($_FILES["image"]["type"] != "") {
                     $image = basename($_FILES['image']['name']);
-                    $dossier = 'images/paragraphs';
+                    $dossier = '../images/paragraphs/';
                     $extensions = array('.png', '.gif', '.jpg', '.jpeg');
                     $extension = strrchr($_FILES["image"]['name'], '.');
                     if (!in_array($extension, $extensions)) {
@@ -30,7 +30,6 @@ if(logged($BDD))
                             $Requete = "UPDATE PARAGRAPHS
                             SET text=:TEXT, 
                                 image=:IMAGE, 
-                                sound=:SOUND,
                                 Suite=:SUITE, 
                                 nbTrophee=:NBTROPHEE
                             WHERE S_ID=:SID AND P_ID=:PID";
@@ -39,7 +38,6 @@ if(logged($BDD))
                                 array(
                                     "TEXT" => secure($_POST['text']),
                                     "IMAGE" => secure($image),
-                                    "SOUND" => secure($_POST['sound']),
                                     "NBTROPHEE" => secure($_POST['trophee']),
                                     "SUITE" => secure($_POST['select']),
                                     "SID" => secure($history),
@@ -69,7 +67,6 @@ if(logged($BDD))
                 } else {
                     $Requete = "UPDATE PARAGRAPHS 
                             SET text=:TEXT, 
-                                sound=:SOUND,
                                 Suite=:SUITE, 
                                 nbTrophee=:NBTROPHEE
                             WHERE S_ID=:SID AND P_ID=:PID";
@@ -77,7 +74,6 @@ if(logged($BDD))
                     $response->execute(
                         array(
                             "TEXT" => secure($_POST['text']),
-                            "SOUND" => secure($_POST['sound']),
                             "NBTROPHEE" => secure($_POST['trophee']),
                             "SUITE" => secure($_POST['select']),
                             "SID" => secure($history),

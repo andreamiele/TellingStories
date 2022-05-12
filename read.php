@@ -89,7 +89,7 @@
                                         <?=$readStoryInfo['P_ID']?>
                                     </h1>
                                 </div>
-                                <div class="card-object" data-scroll data-scroll-speed="1">
+                                <!--<div class="card-object" data-scroll data-scroll-speed="1">
                                     <div class="object-container">
                                         <div class="object-body">
                                             <h3> Object 1 :</h3>
@@ -101,7 +101,7 @@
                                             <h3> Object 1 :</h3>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="card-history" data-scroll data-scroll-speed="1">
                                     <div class="card-body">
@@ -128,9 +128,7 @@
                                     <div class="contactbutton">
                                         <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&id=<?=$i?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
                                     </div>
-                                    <div class="contactbutton">
-                                        <button onclick="clickrandom()" class="bn632-hover-2 bn19">Hasard !</button>
-                                    </div>
+
                                     <?php $i=$i+1;
                                 }
                             } // If continuer
@@ -183,6 +181,11 @@
                                     <div class="card-body">
                                         <p>
                                             <?=$readStoryInfo['text']?>
+
+                                            <?php if ($readStoryInfo['image']!=null) { ?>
+
+                                            <img src="images/paragraphs/<?=$readStoryInfo['image']!=null ?>" >
+                                            <?php }?>
                                         </p>
                                     </div>
                                 </div> </br>

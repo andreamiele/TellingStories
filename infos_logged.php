@@ -30,7 +30,7 @@ $Requete="SELECT * FROM USERS
 
                     <div class="clearfix">
                         <button onclick="document.getElementById('id01').style.display='none'" type="button" class="bn632-hover bn22">Cancel</button>
-                        <a href='deleteaccount.php'><button type="button" class="bn632-hover bn28">Delete</button></a>
+                        <a href='deleteaccount.php'><button type="button" class="bn632-hover bn25">Delete</button></a>
                     </div>
 
             </form>
@@ -47,9 +47,19 @@ $Requete="SELECT * FROM USERS
 
                 </div>
 
-                <div class="div-block-5">
-
-                    <img src="">
+                <div class="div-block-5" >
+                    <?php if ($users['profile_image']!=null){ ?>
+                    <img width="200" src="images/PP/<?=$users['profile_image'] ?>">
+                    <?php } ?>
+                    <form id="create" method="POST" action="functions/changepp.php" enctype="multipart/form-data">
+                        <div class="field padding-bottom--24">
+                            <label for="pp">Photo de profil</label>
+                            <input type="file" name="pp" id ="pp">
+                        </div>
+                        <div class="contactbutton">
+                            <button type="submit" class="bn632-hover bn22">Changer</button>
+                        </div>
+                    </form>
 
                 </div>
 

@@ -2,26 +2,29 @@
 include("nav.php");
 if(logged($BDD))
 {
-        if (isset($_GET['P_ID']))
-        {
-?>
-    <div class="conteneurpage" data-scroll-section>
-        <div class="emballage">
-            <div class="accueilsection">
+
+        ?>
+        <div class="conteneurpage" data-scroll-section>
+            <div class="emballage">
+                <div class="accueilsection">
 
 
-                <h1 class="accueiltitrelivre">
-                    Ecriture de paragraphe
-                </h1>
+                    <h1 class="accueiltitrelivre">
+                        Ajout d'un paragraphe supplémentaire
+                    </h1>
 
-            </div>
+                </div>
 
 
-            <div class="card-history-create" data-scroll data-scroll-speed="1">
+                <div class="card-history-create" data-scroll data-scroll-speed="1">
 
-                <div class="card-body">
-                    <form id="create" method="POST" action="ajout_paragraphe.php?P_ID=<?= $_GET['P_ID'] ?>"">
+                    <div class="card-body">
+                        <form id="create" method="POST" action="ajout_nouveauparagraphe.php">
 
+                        <div class="field padding-bottom--24">
+                            <label for="Text">Numero du paragraphe</label>
+                            <input type="number" id="nb" name="numero">
+                        </div>
                         <div class="field padding-bottom--24">
                             <label for="Text">Texte</label>
                             <textarea  id="Text" name="text"></textarea>
@@ -60,39 +63,39 @@ if(logged($BDD))
                         </div>
                         <div class="contactbutton">
 
-                                <button type="button" class="bn632-hover bn25"  id="btn" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                    </svg>
-                                </button>
+                            <button type="button" class="bn632-hover bn25"  id="btn" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                            </button>
 
 
 
                         </div>
                         <div class="contactbutton">
-                        <button type="submit" formaction="ajout_paragraphe.php?P_ID=<?= $_GET['P_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
-                            Paragraphe suivant
-                        </button>
+                            <button type="submit" formaction="ajout_nouveauparagraphe.php" class="bn632-hover-2 bn25"  id="btn" >
+                                Ajouter le paragraphe
+                            </button>
                         </div>
 
-                    </form>
-                </div>
+                        </form>
+                    </div>
 
+
+                </div>
+                </br>
 
             </div>
-            </br>
-
         </div>
-    </div>
-<?php
-    /*}
-    else
-    {
+        <?php
+        /*}
+        else
+        {
 
+        }
+    }*/
     }
-}*/
-}}
 else
 {
     echo "Access denied! You are not an administrator";

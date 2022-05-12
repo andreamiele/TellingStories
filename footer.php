@@ -33,7 +33,6 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script>
     const swiper = new Swiper(".swiper", {
-        init:false,
         slidesPerView: 3,
         spaceBetween: 30,
         slidesPerGroup: 3,

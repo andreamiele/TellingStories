@@ -9,31 +9,12 @@ if (logged_admin($BDD))
         if (testHistory($BDD,$_GET['S_ID']))
         {
 
-    $Requete="SELECT text, back_image, image, sound, nbTrophee, Suite  FROM PARAGRAPHS WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
-    $readStoryInfo=$response->fetch();
+        $Requete="SELECT text, back_image, image, nbTrophee, Suite  FROM PARAGRAPHS WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
+        $response = $BDD->prepare($Requete);
+        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
+        $readStoryInfo=$response->fetch();
 
-        $R = "SELECT COUNT(*) AS nb FROM PARAGRAPHS WHERE S_ID=:NUMBER";
-    $r = $BDD->prepare($R);
-        $r->execute(array("NUMBER"=>$_GET['S_ID']));
-        $Count=$r->fetch();
-        $_SESSION['currentHistory']=$_GET['S_ID'];
         ?>
-        <form method="POST" action="functions/changepage.php">
-<div class="selectdiv">
-        <select id="selection" class="select" name="NB_ID" onchange="this.form.submit()">
-       <?php for ($i=1; $i<=$Count['nb'];$i++){ ?>
-
-
-                                <option value="<?= $i ?>"><?= $i ?></option>
-
-       <?php }
-
-    ?>
-        </select>
-        </div>
-        </form>
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
             <div class="accueilsection">
@@ -44,7 +25,34 @@ if (logged_admin($BDD))
                 </h1>
 
             </div>
+            <?php
 
+
+            $R = "SELECT * FROM PARAGRAPHS WHERE S_ID=:NUMBER";
+            $r = $BDD->prepare($R);
+            $r->execute(array("NUMBER"=>$_GET['S_ID']));?>
+            <form method="POST" action="functions/changepage.php">
+                <div class="selectdiv">
+                    <select id="selection" class="select" name="NB_ID" onchange="this.form.submit()">
+                        <?php
+                        while($Count=$r->fetch())
+                        {
+                            $_SESSION['currentHistory']=$_GET['S_ID'];
+                            if ($Count['P_ID']==$_GET['P_ID'])
+                            {
+                                ?>
+                                <option selected value="<?= $Count['P_ID'] ?>"><?= $Count['P_ID'] ?></option>
+
+                            <?php }
+                            else{?>
+                                <option value="<?= $Count['P_ID'] ?>"><?= $Count['P_ID'] ?></option>
+                            <?php }
+                        }
+
+                        ?>
+                    </select>
+                </div>
+            </form>
 
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
@@ -55,10 +63,7 @@ if (logged_admin($BDD))
                         <label for="Text">Texte</label>
                         <textarea  id="Text" name="text"><?= $readStoryInfo['text']?></textarea>
                     </div>
-                    <div class="field padding-bottom--24">
-                        <label for="sound">Son</label>
-                        <input type="file" name="sound" id ="sound" value="<?= $readStoryInfo['sound']?>">
-                    </div>
+
                     <div class="field padding-bottom--24">
                         <label for="image">Image</label>
                         <input type="file" name="image" id ="image" value="<?= $readStoryInfo['image']?>">
@@ -113,7 +118,7 @@ if (logged_admin($BDD))
                     </div>
                     <div class="contactbutton">
                         <button type="submit" formaction="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>&S_ID=<?= $_GET['S_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
-                            Paragraphe suivant
+                            Modifier le paragraphe
                         </button>
                     </div>
 

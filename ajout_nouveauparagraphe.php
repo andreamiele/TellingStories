@@ -7,12 +7,12 @@ function secure($user_input)
     return $secure_input;
 }
 if(logged($BDD)) {
-    if (isset($_GET['P_ID'])) {
+    if (isset($_POST['numero'])) {
 
-        $Requete = "SELECT COUNT(*) as nb FROM PARAGRAPHS WHERE P_ID=:PID AND S_ID =: SID";
+        $Requete = "SELECT COUNT(*) as nb FROM PARAGRAPHS WHERE P_ID=:PID AND S_ID =:SID";
 
         $response = $BDD->prepare($Requete);
-        $response->execute(array("SID" => secure($_SESSION['id_histoire']), "PID" => secure($_GET['P_ID'])));
+        $response->execute(array("PID" => secure($_POST['numero']),"SID" => secure($_SESSION['id_histoire'])));
         $count = $response -> fetch();
         if ($count['nb']==0) {
 
@@ -33,7 +33,7 @@ if(logged($BDD)) {
                                 VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :NBTROPHEE, :SUITE);";
 
                         $response = $BDD->prepare($Requete);
-                        $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => $_GET['P_ID'], "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($image), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
+                        $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => secure($_POST['numero']), "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($image), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
                         $_SESSION['id_parag'] = $_GET['P_ID'];
                         $_SESSION['id_parag'] += 1;
 
@@ -45,7 +45,7 @@ if(logged($BDD)) {
                                         VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                                 $response = $BDD->prepare($Requete);
-                                $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));
+                                $response->execute(array("DEP" => secure($_POST['numero']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));
                             }
                         }
                     }
@@ -54,7 +54,7 @@ if(logged($BDD)) {
                 $Requete = "INSERT INTO PARAGRAPHS (S_ID, P_ID, text, back_image, image, nbTrophee, Suite) 
                         VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :NBTROPHEE, :SUITE);";
                 $response = $BDD->prepare($Requete);
-                $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => $_GET['P_ID'], "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($_POST['image']), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
+                $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => secure($_POST['numero']), "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($_POST['image']), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
                 $_SESSION['id_parag'] = $_GET['P_ID'];
                 $_SESSION['id_parag'] += 1;
 
@@ -66,7 +66,7 @@ if(logged($BDD)) {
                                 VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                         $response = $BDD->prepare($Requete);
-                        $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));
+                        $response->execute(array("DEP" => secure($_POST['numero']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));
 
                     }
                 }
@@ -74,7 +74,7 @@ if(logged($BDD)) {
         }
     }
 }
-$location = "Location: write-parag.php?P_ID=".$_SESSION['id_parag'];
+$location = "Location: presentationstory.php?S_ID=".$_SESSION['id_histoire'];
 header( $location);
 exit();
 
