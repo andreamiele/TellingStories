@@ -7,7 +7,9 @@ include('nav.php');
         if(logged($BDD))
         {
             $_SESSION['connecte']=true;
-            $Requete="SELECT * FROM USERS WHERE login=:LOGIN";
+            $Requete="SELECT * 
+                        FROM USERS 
+                        WHERE login=:LOGIN";
             $response = $BDD->prepare($Requete);
             $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
             $readStoryInfo=$response->fetch();

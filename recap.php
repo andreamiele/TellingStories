@@ -8,6 +8,8 @@
         {
         if (isset($_GET['S_ID']))
         {
+            if (testHistory($BDD,$_GET['S_ID']))
+            {
             ?>
                     <div class="accueilsection">
                         <h1 class="accueiltitrelivre">
@@ -47,6 +49,7 @@
 
 
        <?php
+            }
         }   // Isset
         } // Logged BDD
         ?>

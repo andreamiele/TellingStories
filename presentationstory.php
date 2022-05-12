@@ -8,8 +8,11 @@
         {
             if(isset($_GET['S_ID']))
             {
-
-                $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  FROM stories WHERE S_ID =:NUMBERS";
+        if (testHistory($BDD,$_GET['S_ID']))
+        {
+                $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  
+                            FROM stories 
+                            WHERE S_ID =:NUMBERS";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("NUMBERS"=>$_GET['S_ID']));
                 $readStoryInfo=$response->fetch()
@@ -96,12 +99,18 @@
 
 
 
-            <?php $Requete="SELECT * FROM MARQUAGE WHERE U_ID=:UID AND S_ID=:SID";
+            <?php $Requete="SELECT * 
+                            FROM MARQUAGE 
+                            WHERE U_ID=:UID AND 
+                                  S_ID=:SID";
             $response = $BDD->prepare($Requete);
             $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
             $readStoryInfo=$response->fetch();
 
-            $Requete="SELECT COUNT(*) as nb FROM MARQUAGE WHERE U_ID=:UID AND S_ID=:SID";
+            $Requete="SELECT COUNT(*) as nb 
+                        FROM MARQUAGE 
+                        WHERE U_ID=:UID AND 
+                              S_ID=:SID";
             $response = $BDD->prepare($Requete);
             $response->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($_GET['S_ID'])));
             $Informations=$response->fetch();
@@ -119,6 +128,7 @@
 
 
            <?php }
+    }
             }
         }
         else

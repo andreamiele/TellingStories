@@ -6,7 +6,8 @@ if(logged($BDD))
     {
     if(isset($_GET['S_ID']))
     {
-
+        if (testHistory($BDD,$_GET['S_ID']))
+        {
         $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  FROM stories WHERE S_ID =:NUMBERS";
         $response = $BDD->prepare($Requete);
         $response->execute(array("NUMBERS"=>$_GET['S_ID']));
@@ -63,7 +64,7 @@ if(logged($BDD))
         </div>
     </div>
     <?php
-}
+}}
     else{ ?>
         <div class="conteneurpage" data-scroll-section>
             <div class="emballage">

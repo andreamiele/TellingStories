@@ -21,7 +21,9 @@ if(logged($BDD)) {
                 //deuxieme requete : Création de l'histoire dans la BDD
                 $fichier = $_FILES["image"]['name'];
                 if (move_uploaded_file($_FILES["image"]['tmp_name'], $dossier . $fichier)) {
-                    $Requete = "INSERT INTO paragraphs (S_ID, P_ID, text, back_image, image, sound, nbTrophee, Suite) VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :SOUND, :NBTROPHEE, :SUITE);";
+                    $Requete = "INSERT INTO paragraphs (S_ID, P_ID, text, back_image, image, sound, nbTrophee, Suite) 
+                                VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :SOUND, :NBTROPHEE, :SUITE);";
+
                     $response = $BDD->prepare($Requete);
                     $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => $_GET['P_ID'], "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($image), "SOUND" => secure($_POST['sound']), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
                     $_SESSION['id_parag'] = $_GET['P_ID'];
@@ -31,7 +33,8 @@ if(logged($BDD)) {
                         if ($i % 2 == 0) {
                             $A = $_POST['action'][$i];
                             $B = $_POST['action'][$i + 1];
-                            $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+                            $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) 
+                                        VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));
@@ -40,7 +43,8 @@ if(logged($BDD)) {
                 }
             }
         } else {
-            $Requete = "INSERT INTO paragraphs (S_ID, P_ID, text, back_image, image, sound, nbTrophee, Suite) VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :SOUND, :NBTROPHEE, :SUITE);";
+            $Requete = "INSERT INTO paragraphs (S_ID, P_ID, text, back_image, image, sound, nbTrophee, Suite) 
+                        VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :SOUND, :NBTROPHEE, :SUITE);";
             $response = $BDD->prepare($Requete);
             $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => $_GET['P_ID'], "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($_POST['image']), "SOUND" => secure($_POST['sound']), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
             $_SESSION['id_parag'] = $_GET['P_ID'];
@@ -50,7 +54,8 @@ if(logged($BDD)) {
                 if ($i % 2 == 0) {
                     $A = $_POST['action'][$i];
                     $B = $_POST['action'][$i + 1];
-                    $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
+                    $Requete = "INSERT INTO actions (ID_DEPART, NOM_ACTION, ID_ARRIVEE, CONSEQUENCE, S_ID) 
+                                VALUES (:DEP,:NOM,:ARR,:CONS,:SID);";
 
                     $response = $BDD->prepare($Requete);
                     $response->execute(array("DEP" => secure($_GET['P_ID']), "NOM" => secure($A), "ARR" => secure($B), "CONS" => NULL, "SID" => secure($_SESSION['id_histoire'])));

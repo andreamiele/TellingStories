@@ -2,7 +2,9 @@
 function logged($BDD)
 { if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
-        $Requete="SELECT * FROM users WHERE login=:LOGIN";
+        $Requete="SELECT * 
+                    FROM users 
+                    WHERE login=:LOGIN";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
             "LOGIN" => $_SESSION['login']
@@ -11,7 +13,9 @@ function logged($BDD)
         {
             if(password_verify($_SESSION['password'],$_COOKIE['password']))
             {
-                $Requete="SELECT `Nom`, Prenom,nbTrophees FROM users WHERE login=:LOGIN";
+                $Requete="SELECT `Nom`, Prenom,nbTrophees 
+                            FROM users 
+                            WHERE login=:LOGIN";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("LOGIN" => $_SESSION['login']));
                 $_COOKIE=$response->fetch();
@@ -29,14 +33,17 @@ function logged_admin($BDD)
 {
     if(isset($_SESSION['login']) && isset($_SESSION['password']))
     {
-        $Requete="SELECT `password` as pass FROM users WHERE login=:LOGIN AND admin=1";
+        $Requete="SELECT `password` as pass 
+                    FROM users 
+                    WHERE login=:LOGIN AND 
+                          admin=1";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
             "LOGIN" => $_SESSION['login']
         ));
         while($_COOKIE=$response->fetch())
         {
-            if(password_verify($_SESSION['password'],$_COOKIE['password']))
+            if(password_verify($_SESSION['password'],$_COOKIE['pass']))
             {
             return true;
             }
@@ -52,5 +59,33 @@ $BDD = new PDO( "mysql:host=localhost;dbname=histoires;charset=utf8",
 # Résultat du form de login.php: $_POST['login'] et $_POST['password']
 catch (Exception $e) {
 die('Erreur fatale : ' . $e->getMessage());
+}
+
+function testHistory($BDD,$nb){
+    $Requete="SELECT COUNT(*) as nb 
+                FROM stories 
+                WHERE S_ID=:S_ID";
+    $response = $BDD->prepare($Requete);
+    $response->execute(array(
+        "S_ID" =>secure($nb)
+    ));
+
+    $Reponse=$response->fetch();
+    if ($Reponse['nb']!=0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
+function testId($arr,$id){
+    if ($id<count($arr)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 ?>

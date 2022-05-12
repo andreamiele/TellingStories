@@ -9,27 +9,29 @@ function secure($user_input)
 if (logged_admin($BDD)) {
     if (isset($_GET['S_ID']))
     {
-    $history = secure($_GET['S_ID']);
-    $Requete = "DELETE FROM stories WHERE `S_ID`=:NUM ;";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUM" => $history));
+        if (testHistory($BDD,$_GET['S_ID'])) {
+            $history = secure($_GET['S_ID']);
+            $Requete = "DELETE FROM stories WHERE `S_ID`=:NUM ;";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM" => $history));
 
-    $Requete = "DELETE FROM paragraphs WHERE `S_ID`=:NUM;";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUM" => $history));
+            $Requete = "DELETE FROM paragraphs WHERE `S_ID`=:NUM;";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM" => $history));
 
-    $Requete = "DELETE FROM actions WHERE `S_ID`=:NUM;";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUM" => $history));
+            $Requete = "DELETE FROM actions WHERE `S_ID`=:NUM;";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM" => $history));
 
-    $Requete = "DELETE FROM advancement WHERE `S_ID`=:NUM;";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUM" => $history));
+            $Requete = "DELETE FROM advancement WHERE `S_ID`=:NUM;";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM" => $history));
 
 
-    $Requete = "DELETE FROM marquage WHERE `S_ID`=:NUM;";
-    $response = $BDD->prepare($Requete);
-    $response->execute(array("NUM" => $history));
+            $Requete = "DELETE FROM marquage WHERE `S_ID`=:NUM;";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("NUM" => $history));
+        }
     }
 }
 else{

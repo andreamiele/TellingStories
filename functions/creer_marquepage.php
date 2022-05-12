@@ -13,13 +13,13 @@ if(logged($BDD))
     {
         $chemin.=($valeur." ");
     }
-
-    if (isset($_GET['S_ID']) && isset($_GET['P_ID'])) {
-
-        $Requete = "INSERT INTO MARQUAGE (U_ID,S_ID,P_ID,CHEMIN) VALUES (:U_ID, :S_ID, :P_ID, :CHEMIN);";
-        $response = $BDD->prepare($Requete);
-        $response->execute(array("U_ID" => secure($_SESSION['U_ID']), "P_ID" => secure($_GET['P_ID']), "S_ID" => secure($_GET['S_ID']), "CHEMIN" => secure($chemin)));
-
+    if (isset($_GET['S_ID']) && isset($_GET['P_ID']))
+    {
+        if (testHistory($BDD,$_GET['S_ID'])) {
+            $Requete = "INSERT INTO MARQUAGE (U_ID,S_ID,P_ID,CHEMIN) VALUES (:U_ID, :S_ID, :P_ID, :CHEMIN);";
+            $response = $BDD->prepare($Requete);
+            $response->execute(array("U_ID" => secure($_SESSION['U_ID']), "P_ID" => secure($_GET['P_ID']), "S_ID" => secure($_GET['S_ID']), "CHEMIN" => secure($chemin)));
+        }
     }
 }
 

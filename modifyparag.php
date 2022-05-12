@@ -6,6 +6,8 @@ if (logged_admin($BDD))
 {
     if(isset($_GET['S_ID']) && isset($_GET['P_ID']))
     {
+        if (testHistory($BDD,$_GET['S_ID']))
+        {
 
     $Requete="SELECT text, back_image, image, sound, nbTrophee, Suite  FROM paragraphs WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
     $response = $BDD->prepare($Requete);
@@ -132,6 +134,7 @@ if (logged_admin($BDD))
     }
 }*/
 }
+    }
 else
 {
     echo "Access denied! You are not an administrator";

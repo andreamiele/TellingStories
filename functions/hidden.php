@@ -7,17 +7,19 @@ function secure($user_input)
 }
 if(logged($BDD)) {
     if (isset($_GET['S_ID']) && isset($_GET['info'])) {
-        if (logged_admin($BDD)) {
-            $info = $_GET["info"];
-            $history = $_GET["S_ID"];
-            if ($info == 0) {
-                $Requete = "UPDATE stories SET hidden=1 WHERE S_ID=:HISTORY";
-                $response = $BDD->prepare($Requete);
-                $response->execute(array("HISTORY" => secure($history)));
-            } else {
-                $Requete = "UPDATE stories SET hidden=0 WHERE S_ID=:HISTORY";
-                $response = $BDD->prepare($Requete);
-                $response->execute(array("HISTORY" => secure($history)));
+        if (testHistory($BDD,$_GET['S_ID'])) {
+            if (logged_admin($BDD)) {
+                $info = $_GET["info"];
+                $history = $_GET["S_ID"];
+                if ($info == 0) {
+                    $Requete = "UPDATE stories SET hidden=1 WHERE S_ID=:HISTORY";
+                    $response = $BDD->prepare($Requete);
+                    $response->execute(array("HISTORY" => secure($history)));
+                } else {
+                    $Requete = "UPDATE stories SET hidden=0 WHERE S_ID=:HISTORY";
+                    $response = $BDD->prepare($Requete);
+                    $response->execute(array("HISTORY" => secure($history)));
+                }
             }
         }
     }

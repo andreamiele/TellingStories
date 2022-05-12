@@ -43,12 +43,18 @@
                                 $userStatus = logged_admin($BDD);
                                 while($stories=$response->fetch())
                                 {
-                                    $Requete="SELECT COUNT(*) as nb FROM marquage WHERE U_ID=:UID AND S_ID=:SID";
+                                    $Requete="SELECT COUNT(*) as nb 
+                                                FROM marquage 
+                                                WHERE U_ID=:UID AND 
+                                                      S_ID=:SID";
 
                                     $response2 = $BDD->prepare($Requete);
                                     $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
                                     $count=$response2->fetch();
-                                    $Requete="SELECT * FROM marquage WHERE U_ID=:UID AND S_ID=:SID";
+                                    $Requete="SELECT * 
+                                                FROM marquage 
+                                                WHERE U_ID=:UID AND 
+                                                      S_ID=:SID";
 
                                     $response2 = $BDD->prepare($Requete);
                                     $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
