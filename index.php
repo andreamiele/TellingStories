@@ -1,6 +1,12 @@
 <?php include("entete.php") ?>
 <?php include("nav.php") ?>
-
+<?php 
+if(isset($_POST["Message"]))
+{
+    header("Location:mailto:blamirault@ensc.fr?subject=Contact form&body=".secure($_POST['Email']).'%0A'.secure($_POST['Nom']).'%0A'.secure($_POST['Message']), TRUE, 301);
+    exit();
+}
+?>
 <div class="conteneurpage" data-scroll-section>
     <div class="emballage">
         <div class="accueilsection">
@@ -168,14 +174,8 @@
                                         </div>
                                     </div>
                                     <?php
-
-
-
                                 }
-
                             }
-
-
                             ?>
                         </div>
                         <!-- If we need navigation buttons -->
@@ -398,7 +398,7 @@
                         <div class="contact">
                             <div class="formblockcentered">
                                 <div class="form-block w-form">
-                                    <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="post" class="form" >
+                                    <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="post" class="form" action="" >
                                         <div class="columns-3 w-row">
                                             <div class="columnnopadding w-col w-col-6">
                                                 <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
@@ -411,7 +411,7 @@
                                         </div>
                                         <textarea data-name="Message" maxlength="5000" id="Message" name="Message" placeholder="Votre message ..." required="" class="contacttextfield larger-height w-input"></textarea>
                                         <div class="contactbutton">
-                                            <a href="/"><button class="bn632-hover bn25">Envoyer</button></a>
+                                        <button type='submit' class="bn632-hover bn25">Envoyer</button>
                                         </div>
                                     </form>
 
