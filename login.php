@@ -32,7 +32,7 @@ include('nav.php');
                         <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="POST" class="form" action="">
                         <div class="columns-3 w-row">
                             <div class="columnnopaddingleft w-col w-col-6">
-                            <input type="email" class="contacttextfield w-input" maxlength="256" name="login" data-name="login" placeholder="Email" id="login" required=""/>
+                            <input type="text" class="contacttextfield w-input" maxlength="256" name="login" data-name="login" placeholder="Login" id="login" required=""/>
 
                             </div>
                             <div class="columnnopadding w-col w-col-6">

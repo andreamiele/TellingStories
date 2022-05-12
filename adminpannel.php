@@ -17,16 +17,15 @@ if ($userStatus) {
         </div>
 
         <div class="contactbutton">
-            <a href="logout.php" ><button class="bn632-hover-2 bn25">Accéder à la liste des histoires</button></a>
+            <a href="lireunehistoire.php" ><button class="bn632-hover-2 bn25">Accéder à la liste des histoires</button></a>
 
+            <img src="img/constructionMeme.png">
         </div>
         <?php
         $userStatus = logged_admin($BDD); //Request admin(bool)
         if ($userStatus) {
             ?>
-            <div class="contactbutton">
-                <a href=""></a><button class="bn632-hover bn28">Interface admin</button></a>
-            </div>
+
         <?php } ?>
     </div>
 </div>
