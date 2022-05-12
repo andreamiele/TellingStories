@@ -9,10 +9,10 @@ function secure($user_input)
 if(logged($BDD)) {
     if (isset($_GET['P_ID'])) {
 
-        $Requete = "SELECT COUNT(*) as nb FROM PARAGRAPHS WHERE P_ID=:PID AND S_ID =: SID";
+        $Requete = "SELECT COUNT(*) as nb FROM PARAGRAPHS WHERE P_ID=:PID AND S_ID =:SID";
 
         $response = $BDD->prepare($Requete);
-        $response->execute(array("SID" => secure($_SESSION['id_histoire']), "PID" => secure($_GET['P_ID'])));
+        $response->execute(array("PID" => secure($_GET['P_ID']), "SID" => secure($_SESSION['id_histoire'])));
         $count = $response -> fetch();
         if ($count['nb']==0) {
 
