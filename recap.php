@@ -39,7 +39,7 @@
 
 <?php
 
-            $Requete="UPDATE users SET nbTrophees=nbTrophees+:NUMBERS WHERE login=:NUMBERS2";
+            $Requete="UPDATE USERS SET nbTrophees=nbTrophees+:NUMBERS WHERE login=:NUMBERS2";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUMBERS"=>$_SESSION['nbTrophee'],"NUMBERS2"=>$_SESSION['login']));
 

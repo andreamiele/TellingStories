@@ -14,7 +14,7 @@
                     $_SESSION['paragraphe']=$numeropag;
                     if ($_SESSION['paragraphe']==1)
                     {
-                        $Requete="UPDATE stories
+                        $Requete="UPDATE STORIES
                                     SET vues=vues+1
                                     WHERE S_ID=:SID";
                         $response = $BDD->prepare($Requete);
@@ -23,7 +23,7 @@
                                 "SID"=>secure($_GET['S_ID'])
                             ));
 
-                        $Requete="UPDATE users
+                        $Requete="UPDATE USERS
                                     SET Played=Played+1
                                     WHERE User_ID=:UID";
                         $response = $BDD->prepare($Requete);
@@ -33,7 +33,7 @@
                             ));
                     }
 
-                    $Requete="UPDATE marquage
+                    $Requete="UPDATE MARQUAGE
                                 SET P_ID=:PID
                                 WHERE S_ID=:SID
                                 AND U_ID=:UID";
@@ -54,7 +54,7 @@
 
                     array_push($_SESSION['chemin'],$_SESSION['paragraphe']);
                     $Requete="SELECT P_ID,text,Suite,nbTrophee  
-                                FROM paragraphs 
+                                FROM PARAGRAPHS 
                                 WHERE S_ID =:NUMBERS AND 
                                       P_ID =:NUMBERS2";
                     $response = $BDD->prepare($Requete);
@@ -67,7 +67,7 @@
                         if ($count==0){
                             echo("Histoire inconsistante, veuillez contacter un administrateur.");
 
-                            $Requete = "DELETE FROM marquage 
+                            $Requete = "DELETE FROM MARQUAGE
                                         WHERE 
                                         S_ID=:SID
                                         AND U_ID=:UID";
@@ -113,7 +113,7 @@
                                 <?php
 
                                 $Requete="SELECT ID_ARRIVEE,NOM_ACTION  
-                                        FROM actions 
+                                        FROM ACTIONS 
                                         WHERE S_ID =:NUMBERS AND 
                                         ID_DEPART =:NUMBERS2";
                                 $response = $BDD->prepare($Requete);
@@ -136,7 +136,7 @@
                             } // If continuer
                             elseif($readStoryInfo['Suite']==0) // VICTOIRE
                             {
-                                $Requete = "DELETE FROM marquage 
+                                $Requete = "DELETE FROM MARQUAGE 
                                             WHERE 
                                             S_ID=:SID
                                             AND U_ID=:UID";
@@ -148,7 +148,7 @@
 
 
 
-                                $Requete="UPDATE users
+                                $Requete="UPDATE USERS
                                             SET Won=Won+1
                                             WHERE User_ID=:UID";
                                 $response = $BDD->prepare($Requete);
@@ -195,7 +195,7 @@
                             } // If victoire
                             elseif($readStoryInfo['Suite']==1) // DEFAITE
                             {
-                                $Requete=   "UPDATE users
+                                $Requete=   "UPDATE USERS
                                             SET Lost=Lost+1
                                             WHERE User_ID=:UID";
                                 $response = $BDD->prepare($Requete);
@@ -205,7 +205,7 @@
                                     ));
 
 
-                                $Requete = "DELETE FROM marquage 
+                                $Requete = "DELETE FROM MARQUAGE
                                             WHERE 
                                             S_ID=:SID
                                             AND U_ID=:UID";

@@ -40,7 +40,7 @@ if(isset($_POST["Message"]))
                         <div class="container swiper" >
                             <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                                 <?php
-                                $Requete="SELECT * FROM stories";
+                                $Requete="SELECT * FROM STORIES";
 
                                 $response = $BDD->prepare($Requete);
                                 $response->execute();
@@ -50,7 +50,7 @@ if(isset($_POST["Message"]))
                                 while($stories=$response->fetch())
                                 {
                                     $Requete="SELECT COUNT(*) as nb 
-                                                FROM marquage 
+                                                FROM MARQUAGE
                                                 WHERE U_ID=:UID AND 
                                                       S_ID=:SID";
 
@@ -58,7 +58,7 @@ if(isset($_POST["Message"]))
                                     $response2->execute(array("UID"=>secure($_SESSION['U_ID']),"SID"=>secure($stories['S_ID'])));
                                     $count=$response2->fetch();
                                     $Requete="SELECT * 
-                                                FROM marquage 
+                                                FROM MARQUAGE 
                                                 WHERE U_ID=:UID AND 
                                                       S_ID=:SID";
 
@@ -132,7 +132,7 @@ if(isset($_POST["Message"]))
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories";
+                            $Requete="SELECT * FROM STORIES";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -197,7 +197,7 @@ if(isset($_POST["Message"]))
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories ORDER BY write_date ASC ";
+                            $Requete="SELECT * FROM STORIES ORDER BY write_date ASC ";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();
@@ -268,7 +268,7 @@ if(isset($_POST["Message"]))
                     <div class="container swiper" >
                         <div class="swiper-wrapper" data-scroll data-scroll-speed="1">
                             <?php
-                            $Requete="SELECT * FROM stories ORDER BY vues DESC ";
+                            $Requete="SELECT * FROM STORIES ORDER BY vues DESC ";
 
                             $response = $BDD->prepare($Requete);
                             $response->execute();

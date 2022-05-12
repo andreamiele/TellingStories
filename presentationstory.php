@@ -11,7 +11,7 @@
         if (testHistory($BDD,$_GET['S_ID']))
         {
                 $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  
-                            FROM stories 
+                            FROM STORIES 
                             WHERE S_ID =:NUMBERS";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("NUMBERS"=>$_GET['S_ID']));

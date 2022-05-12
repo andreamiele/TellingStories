@@ -17,7 +17,7 @@ if(!isset($_POST['Email'])|| isset($_SESSION['used_email']))
                                     <div class="columnnopaddingleft w-col w-col-6">
                                         <input type="text" class="contacttextfield w-input" maxlength="256" name="Nom" data-name="Nom" placeholder="Nom" id="Nom" required=""/>
                                         <input type="text" class="contacttextfield w-input" maxlength="256" name="Prénom" data-name="Prénom" placeholder="Prénom" id="Prénom" required=""/>
-                                        <input type="email" class="contacttextfield w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email" required=""/>
+                                        <input type="text" class="contacttextfield w-input" maxlength="256" name="Email" data-name="Email" placeholder="Login" id="Email" required=""/>
                                         <?php if(isset($_SESSION['used_email']))
                                         {
                                             echo '<label for="Email" >Email already used !</label>';
@@ -48,7 +48,7 @@ if(!isset($_POST['Email'])|| isset($_SESSION['used_email']))
     else
     {
         $Requete="SELECT `login` 
-                    FROM users;";
+                    FROM USERS;";
         $response = $BDD->prepare($Requete);
         $response->execute();
         $Emails=$response->fetchAll();
@@ -62,11 +62,11 @@ if(!isset($_POST['Email'])|| isset($_SESSION['used_email']))
         if(!isset($_SESSION['used_email']))
         {
             $Requete="SELECT `User_ID` 
-                        FROM users;";
+                        FROM USERS;";
             $response = $BDD->prepare($Requete);
             $response->execute();
             $User_number=$response->fetch();
-            $Requete="INSERT INTO users (Nom, Prenom, `login`, `password`, nbTrophees, `admin`) 
+            $Requete="INSERT INTO USERS (Nom, Prenom, `login`, `password`, nbTrophees, `admin`) 
                         VALUES (:NOM, :PRENOM, :EMAIL, :PASS, 0, 0);";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NOM"=>secure($_POST['Nom']),"PRENOM"=>secure($_POST['Prénom']),"EMAIL"=>secure($_POST['Email']), "PASS"=>secure(password_hash($_POST['password'],PASSWORD_BCRYPT))));

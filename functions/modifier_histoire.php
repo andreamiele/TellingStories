@@ -24,7 +24,7 @@ if(logged($BDD))
                         //deuxieme requete : Création de l'histoire dans la BDD
                         $fichier = $_FILES["couverture"]['name'];
                         if (move_uploaded_file($_FILES["couverture"]['tmp_name'], $dossier . $fichier)) {
-                            $Requete = "UPDATE stories 
+                            $Requete = "UPDATE STORIES 
                                 SET title=:TITLE, 
                                     `desc`=:DESCR, 
                                     `tag`=:TAG,
@@ -51,7 +51,7 @@ if(logged($BDD))
                     }
                 } else {
 
-                    $Requete = "UPDATE stories 
+                    $Requete = "UPDATE STORIES 
                 SET title=:TITLE, 
                     `desc`=:DESCR, 
                     `tag`=:TAG,

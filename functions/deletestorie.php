@@ -11,24 +11,24 @@ if (logged_admin($BDD)) {
     {
         if (testHistory($BDD,$_GET['S_ID'])) {
             $history = secure($_GET['S_ID']);
-            $Requete = "DELETE FROM stories WHERE `S_ID`=:NUM ;";
+            $Requete = "DELETE FROM STORIES WHERE `S_ID`=:NUM ;";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
 
-            $Requete = "DELETE FROM paragraphs WHERE `S_ID`=:NUM;";
+            $Requete = "DELETE FROM PARAGRAPHS WHERE `S_ID`=:NUM;";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
 
-            $Requete = "DELETE FROM actions WHERE `S_ID`=:NUM;";
+            $Requete = "DELETE FROM ACTIONS WHERE `S_ID`=:NUM;";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
 
-            $Requete = "DELETE FROM advancement WHERE `S_ID`=:NUM;";
+            $Requete = "DELETE FROM ADVANCEMENT WHERE `S_ID`=:NUM;";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
 
 
-            $Requete = "DELETE FROM marquage WHERE `S_ID`=:NUM;";
+            $Requete = "DELETE FROM MARQUAGE WHERE `S_ID`=:NUM;";
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
         }

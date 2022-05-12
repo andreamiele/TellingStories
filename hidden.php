@@ -2,7 +2,7 @@
 include('connect.php');
 if(logged($BDD)) {
     if (isset($_GET['S_ID'])) {
-        $Requete = "UPDATE stories 
+        $Requete = "UPDATE STORIES 
                     SET `hidden`=1 
                     WHERE S_ID=:ID";
         $response = $BDD->prepare($Requete);
