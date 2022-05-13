@@ -2,7 +2,8 @@
 include("nav.php");
 if(logged($BDD))
 {
-
+$userStatus = logged_admin($BDD); //Request admin(bool)
+if ($userStatus) {
         ?>
         <div class="conteneurpage" data-scroll-section>
             <div class="emballage">
@@ -99,5 +100,12 @@ if(logged($BDD))
 else
 {
     echo "Access denied! You are not an administrator";
+    echo("<div class='contactbutton'> <a href='index.php'><button  class='bn632-hover-2 bn19'>Retourner à l'accueil</button></a></div>");
+}
+}
+else
+{
+    echo "Access denied!";
+    echo("<div class='contactbutton'> <a href='index.php'><button  class='bn632-hover-2 bn19'>Retourner à l'accueil</button></a></div>");
 }
 include("footer.php"); ?>

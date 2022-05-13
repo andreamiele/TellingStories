@@ -13,7 +13,7 @@
             ?>
                     <div class="accueilsection">
                         <h1 class="accueiltitrelivre">
-                            NUMERO HISTOIRE <?=$_GET['S_ID']?>
+                            NUMERO HISTOIRE <?=secure($_GET['S_ID'])?>
                         </h1>
                     </div>
 
@@ -41,7 +41,7 @@
 
             $Requete="UPDATE USERS SET nbTrophees=nbTrophees+:NUMBERS WHERE login=:NUMBERS2";
             $response = $BDD->prepare($Requete);
-            $response->execute(array("NUMBERS"=>$_SESSION['nbTrophee'],"NUMBERS2"=>$_SESSION['login']));
+            $response->execute(array("NUMBERS"=>secure($_SESSION['nbTrophee']),"NUMBERS2"=>secure($_SESSION['login'])));
 
 
             ?>

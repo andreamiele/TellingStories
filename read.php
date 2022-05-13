@@ -48,7 +48,7 @@
                                 FROM `STORIES` 
                                 WHERE S_ID=:ID";
                     $response = $BDD->prepare($Requete);
-                    $response->execute(array("ID"=>$_GET['S_ID']));
+                    $response->execute(array("ID"=>secure($_GET['S_ID'])));
                     $Hidden=$response->fetch();
                     $hide=$Hidden['hidden'];
 
@@ -58,7 +58,7 @@
                                 WHERE S_ID =:NUMBERS AND 
                                       P_ID =:NUMBERS2";
                     $response = $BDD->prepare($Requete);
-                    $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_SESSION['paragraphe']));
+                    $response->execute(array("NUMBERS"=>secure($_GET['S_ID']),"NUMBERS2"=>secure($_SESSION['paragraphe'])));
 
                     $count = $response->rowCount();
 
@@ -105,7 +105,7 @@
 
                                 <div class="card-history" data-scroll data-scroll-speed="1">
                                     <div class="card-body">
-                                        <p>
+                                        <p style="font-size:1.5em;">
                                             <?=$readStoryInfo['text']?>
                                         </p>
                                     </div>
@@ -117,7 +117,7 @@
                                         WHERE S_ID =:NUMBERS AND 
                                         ID_DEPART =:NUMBERS2";
                                 $response = $BDD->prepare($Requete);
-                                $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_SESSION['paragraphe']));
+                                $response->execute(array("NUMBERS"=>secure($_GET['S_ID']),"NUMBERS2"=>secure($_SESSION['paragraphe'])));
 
                                 $i=0;
                                 $_SESSION['paragraphes']=array();
@@ -126,7 +126,7 @@
                                     array_push($_SESSION['paragraphes'],$ActionInfo['ID_ARRIVEE']);
                                     ?>
                                     <div class="contactbutton">
-                                        <a href="read.php?S_ID=<?=$_GET['S_ID'] ?>&id=<?=$i?>"><button class="bn632-hover bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
+                                        <a href="read.php?S_ID=<?=secure($_GET['S_ID']) ?>&id=<?=secure($i)?>"><button class="bn632-hover-2 bn25"><?=$ActionInfo['NOM_ACTION']?></button></a>
                                     </div>
 
                                     <?php $i=$i+1;
@@ -162,7 +162,7 @@
                                     </h1>
                                 </div>
 
-                                <div class="card-object" data-scroll data-scroll-speed="1">
+                                <!--<div class="card-object" data-scroll data-scroll-speed="1">
                                     <div class="object-container">
                                         <div class="object-body">
                                             <h3> Object 1 :</h3>
@@ -174,25 +174,22 @@
                                             <h3> Object 1 :</h3>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
                                 <div class="card-history" data-scroll data-scroll-speed="1">
                                     <div class="card-body">
-                                        <p>
+                                        <p style="font-size:1.5em;">
                                             <?=$readStoryInfo['text']?>
 
-                                            <?php if ($readStoryInfo['image']!=null) { ?>
 
-                                            <img src="images/paragraphs/<?=$readStoryInfo['image']!=null ?>" >
-                                            <?php }?>
                                         </p>
                                     </div>
                                 </div> </br>
 
 
                                 <div class="contactbutton">
-                                    <a href="recap.php?S_ID=<?=$_GET['S_ID'] ?>"><button class="bn632-hover bn25">RECAPITULATIF</button></a>
+                                    <a href="recap.php?S_ID=<?=secure($_GET['S_ID']) ?>"><button class="bn632-hover-2 bn25">RECAPITULATIF</button></a>
                                 </div>
                                 <?php
                             } // If victoire
@@ -227,7 +224,7 @@
                                     </h1>
                                 </div>
 
-                                <div class="card-object" data-scroll data-scroll-speed="1">
+                                <!--<div class="card-object" data-scroll data-scroll-speed="1">
                                     <div class="object-container">
                                         <div class="object-body">
                                             <h3> Object 1 :</h3>
@@ -239,18 +236,18 @@
                                             <h3> Object 1 :</h3>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="card-history" data-scroll data-scroll-speed="1">
                                     <div class="card-body">
-                                        <p>
+                                        <p style="font-size:1.5em;">
                                             <?=$readStoryInfo['text']?>
                                         </p>
                                     </div>
                                 </div> </br>
 
                                 <div class="contactbutton">
-                                    <a href="recap.php?S_ID=<?=$_GET['S_ID'] ?>"><button class="bn632-hover bn25">RECAPITULATIF</button></a>
+                                    <a href="recap.php?S_ID=<?=secure($_GET['S_ID']) ?>"><button class="bn632-hover-2 bn25">RECAPITULATIF</button></a>
                                 </div>
 
 

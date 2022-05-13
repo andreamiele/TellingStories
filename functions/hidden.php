@@ -9,8 +9,8 @@ if(logged($BDD)) {
     if (isset($_GET['S_ID']) && isset($_GET['info'])) {
         if (testHistory($BDD,$_GET['S_ID'])) {
             if (logged_admin($BDD)) {
-                $info = $_GET["info"];
-                $history = $_GET["S_ID"];
+                $info = secure($_GET["info"]);
+                $history = secure($_GET["S_ID"]);
                 if ($info == 0) {
                     $Requete = "UPDATE STORIES SET hidden=1 WHERE S_ID=:HISTORY";
                     $response = $BDD->prepare($Requete);

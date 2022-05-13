@@ -11,7 +11,7 @@ function logged($BDD)
                     WHERE login=:LOGIN";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
-            "LOGIN" => $_SESSION['login']
+            "LOGIN" => secure($_SESSION['login'])
         ));
         while($_COOKIE=$response->fetch())
         {
@@ -21,7 +21,7 @@ function logged($BDD)
                             FROM USERS 
                             WHERE login=:LOGIN";
                 $response = $BDD->prepare($Requete);
-                $response->execute(array("LOGIN" => $_SESSION['login']));
+                $response->execute(array("LOGIN" => secure($_SESSION['login'])));
                 $_COOKIE=$response->fetch();
                 $_SESSION['nom']=$_COOKIE['Nom'];
                 $_SESSION['prenom']=$_COOKIE['Prenom'];
@@ -43,7 +43,7 @@ function logged_admin($BDD)
                           admin=1";
         $response = $BDD->prepare($Requete);
         $response->execute(array(
-            "LOGIN" => $_SESSION['login']
+            "LOGIN" => secure($_SESSION['login'])
         ));
         while($_COOKIE=$response->fetch())
         {
@@ -59,7 +59,15 @@ try {
 $BDD = new PDO( "mysql:host=localhost;dbname=amiele;charset=utf8",
 "amiele","franchementosef", array(PDO::ATTR_ERRMODE
 =>PDO::ERRMODE_EXCEPTION));
-}
+} /*POUR ZZZ */
+
+
+    /*$BDD = new PDO( "mysql:host=localhost;dbname=Histoires;charset=utf8",
+"amiele","amiele", array(PDO::ATTR_ERRMODE
+=>PDO::ERRMODE_EXCEPTION));
+} POUR LOCAL HOST*/
+
+
 # Résultat du form de login.php: $_POST['login'] et $_POST['password']
 catch (Exception $e) {
 die('Erreur fatale : ' . $e->getMessage());

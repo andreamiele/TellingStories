@@ -2,8 +2,8 @@
 include('nav.php');
     if(isset($_POST['login']) && isset($_POST['Password']))
     {
-        $_SESSION['login']=$_POST['login'];
-        $_SESSION['password']=$_POST['Password'];
+        $_SESSION['login']=secure($_POST['login']);
+        $_SESSION['password']=secure($_POST['Password']);
         if(logged($BDD))
         {
             $_SESSION['connecte']=true;

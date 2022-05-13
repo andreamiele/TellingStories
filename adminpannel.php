@@ -11,7 +11,7 @@ if ($userStatus) {
 
 
             <h1 class="accueiltitrelivre">
-                Bienvenue <?php echo($_SESSION["nom"]." ".$_SESSION["prenom"]) ?> <!-- Mettre le nom d'utilisateur qui est connecté -->
+                Bienvenue <?php echo(secure($_SESSION["nom"])." ".secure($_SESSION["prenom"])) ?> <!-- Mettre le nom d'utilisateur qui est connecté -->
             </h1>
 
         </div>
@@ -35,6 +35,7 @@ if ($userStatus) {
 else
 {
     echo "Acces Denied ! You are not an administrator";
+    echo("<div class='contactbutton'> <a href='index.php'><button  class='bn632-hover-2 bn19'>Retourner à l'accueil</button></a></div>");
 }
 
 

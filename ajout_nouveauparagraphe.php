@@ -7,7 +7,7 @@ function secure($user_input)
     return $secure_input;
 }
 if(logged($BDD)) {
-    if (isset($_POST['numero'])) {
+    if (isset($_POST['numero'])&&isset($_SESSION['id_histoire'])&&isset($_SESSION['text'])&&isset($_SESSION['trophee'])&&isset($_SESSION['select'])&&isset($_SESSION['action'])&&isset($_GET['P_ID'])) {
 
         $Requete = "SELECT COUNT(*) as nb FROM PARAGRAPHS WHERE P_ID=:PID AND S_ID =:SID";
 
@@ -55,7 +55,7 @@ if(logged($BDD)) {
                         VALUES (:S_ID, :PID, :TEXT, :BIMAGE, :IMAGE, :NBTROPHEE, :SUITE);";
                 $response = $BDD->prepare($Requete);
                 $response->execute(array("S_ID" => secure($_SESSION['id_histoire']), "PID" => secure($_POST['numero']), "TEXT" => secure($_POST['text']), "BIMAGE" => secure($_POST['image']), "IMAGE" => secure($_POST['image']), "NBTROPHEE" => secure($_POST['trophee']), "SUITE" => secure($_POST['select'])));
-                $_SESSION['id_parag'] = $_GET['P_ID'];
+                $_SESSION['id_parag'] = secure($_GET['P_ID']);
                 $_SESSION['id_parag'] += 1;
 
                 for ($i = 0; $i < count($_POST['action']); $i++) {
@@ -74,7 +74,7 @@ if(logged($BDD)) {
         }
     }
 }
-$location = "Location: presentationstory.php?S_ID=".$_SESSION['id_histoire'];
+$location = "Location: presentationstory.php?S_ID=".secure($_SESSION['id_histoire']);
 header( $location);
 exit();
 

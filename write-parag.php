@@ -2,8 +2,9 @@
 include("nav.php");
 if(logged($BDD))
 {
-        if (isset($_GET['P_ID']))
+        if (isset($_GET['P_ID'])&&isset($_SESSION['id_histoire']))
         {
+
 ?>
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
@@ -20,7 +21,7 @@ if(logged($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="create" method="POST" action="ajout_paragraphe.php?P_ID=<?= $_GET['P_ID'] ?>"">
+                    <form id="create" method="POST" action="ajout_paragraphe.php?P_ID=<?= secure($_GET['P_ID']) ?>"">
 
                         <div class="field padding-bottom--24">
                             <label for="Text">Texte</label>
@@ -71,9 +72,12 @@ if(logged($BDD))
 
                         </div>
                         <div class="contactbutton">
-                        <button type="submit" formaction="ajout_paragraphe.php?P_ID=<?= $_GET['P_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
+                        <button type="submit" formaction="ajout_paragraphe.php?P_ID=<?= secure($_GET['P_ID']) ?>" class="bn632-hover-2 bn25"  id="btn" >
                             Paragraphe suivant
                         </button>
+                            <button type="submit" formaction="ajout_paragrapheFin.php?P_ID=<?= secure($_GET['P_ID']) ?>" class="bn632-hover-2 bn25"  id="btn" >
+                                Terminer l'histoire
+                            </button>
                         </div>
 
                     </form>
@@ -92,9 +96,11 @@ if(logged($BDD))
 
     }
 }*/
-}}
-else
-{
-    echo "Access denied! You are not an administrator";
+
+}
+    else
+    {
+        echo "Access denied! You are not an administrator";
+    }
 }
 include("footer.php"); ?>

@@ -10,7 +10,7 @@ if(logged($BDD))
         {
         $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  FROM STORIES WHERE S_ID =:NUMBERS";
         $response = $BDD->prepare($Requete);
-        $response->execute(array("NUMBERS"=>$_GET['S_ID']));
+        $response->execute(array("NUMBERS"=>secure($_GET['S_ID'])));
         $readStoryInfo=$response->fetch()
     ?>
 

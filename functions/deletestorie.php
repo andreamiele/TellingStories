@@ -23,10 +23,6 @@ if (logged_admin($BDD)) {
             $response = $BDD->prepare($Requete);
             $response->execute(array("NUM" => $history));
 
-            $Requete = "DELETE FROM ADVANCEMENT WHERE `S_ID`=:NUM;";
-            $response = $BDD->prepare($Requete);
-            $response->execute(array("NUM" => $history));
-
 
             $Requete = "DELETE FROM MARQUAGE WHERE `S_ID`=:NUM;";
             $response = $BDD->prepare($Requete);

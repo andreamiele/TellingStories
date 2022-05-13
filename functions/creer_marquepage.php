@@ -26,7 +26,7 @@ if(logged($BDD))
 $_SESSION['paragraphe']=1;
 $_SESSION['paragraphes']=array($_SESSION['paragraphe']);
 
-$location = "Location: ../read.php?S_ID=".$_GET['S_ID']."&id=0";
+$location = "Location: ../read.php?S_ID=".secure($_GET['S_ID'])."&id=0";
 header( $location);
 exit();
 

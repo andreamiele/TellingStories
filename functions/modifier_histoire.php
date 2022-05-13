@@ -5,22 +5,26 @@ function secure($user_input)
     $secure_input=htmlspecialchars($user_input,ENT_QUOTES,'UTF-8',false);
     return $secure_input;
 }
-$history = $_GET["S_ID"];
+$history = secure($_GET["S_ID"]);
 if(logged($BDD))
 {
-    if (isset($_GET['S_ID'])) {
-        if (testHistory($BDD, $_GET['S_ID'])) {
-            if (logged_admin($BDD)) {
+    if (isset($_GET['S_ID']))
+    {
+        if (testHistory($BDD, $_GET['S_ID']))
+        {
+            if (logged_admin($BDD))
+            {
                 if ($_FILES["couverture"]["type"] != "") {
                     $image = basename($_FILES['couverture']['name']);
-                    $dossier = 'images/couverture';
+                    $dossier = '../images/couverture/';
                     $extensions = array('.png', '.gif', '.jpg', '.jpeg');
                     $extension = strrchr($_FILES["couverture"]['name'], '.');
                     if (!in_array($extension, $extensions)) {
                         $erreur = 'Vous devez uploader un fichier de type png, gif, jpg ou jpeg...';
                     }
 
-                    if (!isset($erreur)) {
+                    if (!isset($erreur))
+                    {
                         //deuxieme requete : Création de l'histoire dans la BDD
                         $fichier = $_FILES["couverture"]['name'];
                         if (move_uploaded_file($_FILES["couverture"]['tmp_name'], $dossier . $fichier)) {
@@ -49,7 +53,10 @@ if(logged($BDD))
                     } else {
                         echo $erreur;
                     }
-                } else {
+                }
+
+                else
+                {
 
                     $Requete = "UPDATE STORIES 
                 SET title=:TITLE, 

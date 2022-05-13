@@ -11,7 +11,7 @@ if (logged_admin($BDD))
 
         $Requete="SELECT text, back_image, image, nbTrophee, Suite  FROM PARAGRAPHS WHERE S_ID =:NUMBERS AND P_ID=:NUMBERS2";
         $response = $BDD->prepare($Requete);
-        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
+        $response->execute(array("NUMBERS"=>secure($_GET['S_ID']),"NUMBERS2"=>secure($_GET['P_ID'])));
         $readStoryInfo=$response->fetch();
 
         ?>
@@ -21,7 +21,7 @@ if (logged_admin($BDD))
 
 
                 <h1 class="accueiltitrelivre">
-                    Modifier paragraphe n° <?= $_GET['P_ID'] ?>
+                    Modifier paragraphe n° <?= secure($_GET['P_ID']) ?>
                 </h1>
 
             </div>
@@ -30,7 +30,7 @@ if (logged_admin($BDD))
 
             $R = "SELECT * FROM PARAGRAPHS WHERE S_ID=:NUMBER";
             $r = $BDD->prepare($R);
-            $r->execute(array("NUMBER"=>$_GET['S_ID']));?>
+            $r->execute(array("NUMBER"=>secure($_GET['S_ID'])));?>
             <form method="POST" action="functions/changepage.php">
                 <div class="selectdiv">
                     <select id="selection" class="select" name="NB_ID" onchange="this.form.submit()">
@@ -38,7 +38,7 @@ if (logged_admin($BDD))
                         while($Count=$r->fetch())
                         {
                             $_SESSION['currentHistory']=$_GET['S_ID'];
-                            if ($Count['P_ID']==$_GET['P_ID'])
+                            if ($Count['P_ID']==secure($_GET['P_ID']))
                             {
                                 ?>
                                 <option selected value="<?= $Count['P_ID'] ?>"><?= $Count['P_ID'] ?></option>
@@ -57,7 +57,7 @@ if (logged_admin($BDD))
             <div class="card-history-create" data-scroll data-scroll-speed="1">
 
                 <div class="card-body">
-                    <form id="create" method="POST" action="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>&S_ID=<?= $_GET['S_ID'] ?>">
+                    <form id="create" method="POST" action="functions/modifier_parag.php?P_ID=<?= secure($_GET['P_ID']) ?>&S_ID=<?= secure($_GET['S_ID']) ?>">
 
                     <div class="field padding-bottom--24">
                         <label for="Text">Texte</label>
@@ -74,7 +74,7 @@ if (logged_admin($BDD))
                             <select id="selection" class="select" name="select" >
                                 <option value="0">Victoire</option>
                                 <option value="1">Défaite</option>
-                                <option value="2">Continuer</option>
+                                <option selected value="2">Continuer</option>
                             </select>
                         </div>
 
@@ -89,7 +89,7 @@ if (logged_admin($BDD))
 
         $Requete="SELECT ID_ARRIVEE,NOM_ACTION  FROM ACTIONS WHERE S_ID =:NUMBERS AND ID_DEPART =:NUMBERS2";
         $response = $BDD->prepare($Requete);
-        $response->execute(array("NUMBERS"=>$_GET['S_ID'],"NUMBERS2"=>$_GET['P_ID']));
+        $response->execute(array("NUMBERS"=>secure($_GET['S_ID']),"NUMBERS2"=>secure($_GET['P_ID'])));
 
 
         while($ActionInfo=$response->fetch())
@@ -103,7 +103,8 @@ if (logged_admin($BDD))
                             <input type="number" id="nbaction" name="action[]"  value="<?=$ActionInfo['ID_ARRIVEE']?>"/>
                         </div>
                     </div>
-                    <?php } ?>
+
+                        <?php } ?>
                     <div class="contactbutton">
 
                         <button type="button" class="bn632-hover bn25"  id="btn" >
@@ -117,7 +118,7 @@ if (logged_admin($BDD))
 
                     </div>
                     <div class="contactbutton">
-                        <button type="submit" formaction="functions/modifier_parag.php?P_ID=<?= $_GET['P_ID'] ?>&S_ID=<?= $_GET['S_ID'] ?>" class="bn632-hover-2 bn25"  id="btn" >
+                        <button type="submit" formaction="functions/modifier_parag.php?P_ID=<?= secure($_GET['P_ID']) ?>&S_ID=<?= secure($_GET['S_ID']) ?>" class="bn632-hover-2 bn25"  id="btn" >
                             Modifier le paragraphe
                         </button>
                     </div>
