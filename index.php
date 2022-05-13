@@ -1,6 +1,6 @@
 <?php include("entete.php") ?>
 <?php include("nav.php") ?>
-<?php 
+<?php
 if(isset($_POST["Message"]))
 {
     header("Location:mailto:blamirault@ensc.fr?subject=Contact form&body=".secure($_POST['Email']).'%0A'.secure($_POST['Nom']).'%0A'.secure($_POST['Message']), TRUE, 301);
@@ -11,9 +11,9 @@ if(isset($_POST["Message"]))
     <div class="emballage">
         <div class="accueilsection">
             <div class="accueilcolonnes">
-                    <h1 class="accueiltitreprincipal">
-                        Telling Stories
-                    </h1>
+                <h1 class="accueiltitreprincipal">
+                    Telling Stories
+                </h1>
             </div>
         </div>
 
@@ -411,7 +411,7 @@ if(isset($_POST["Message"]))
                                         </div>
                                         <textarea data-name="Message" maxlength="5000" id="Message" name="Message" placeholder="Votre message ..." required="" class="contacttextfield larger-height w-input"></textarea>
                                         <div class="contactbutton">
-                                        <button type='submit' class="bn632-hover bn25">Envoyer</button>
+                                            <button type='submit' class="bn632-hover bn25">Envoyer</button>
                                         </div>
                                     </form>
 

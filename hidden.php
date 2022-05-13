@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('connect.php');
 if(logged($BDD)) {
     if (isset($_GET['S_ID'])&&testHistory($BDD,secure($_GET['S_ID'])))

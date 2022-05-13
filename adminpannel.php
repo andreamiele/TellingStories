@@ -4,31 +4,31 @@
 <?php
 $userStatus = logged_admin($BDD); //Request admin(bool)
 if ($userStatus) {
-?>
-<div class="conteneurpage" data-scroll-section>
-    <div class="emballage">
-        <div class="accueilsection">
+    ?>
+    <div class="conteneurpage" data-scroll-section>
+        <div class="emballage">
+            <div class="accueilsection">
 
 
-            <h1 class="accueiltitrelivre">
-                Bienvenue <?php echo(secure($_SESSION["nom"])." ".secure($_SESSION["prenom"])) ?> <!-- Mettre le nom d'utilisateur qui est connecté -->
-            </h1>
+                <h1 class="accueiltitrelivre">
+                    Bienvenue <?php echo(secure($_SESSION["nom"])." ".secure($_SESSION["prenom"])) ?> <!-- Mettre le nom d'utilisateur qui est connecté -->
+                </h1>
 
+            </div>
+
+            <div class="contactbutton">
+                <a href="lireunehistoire.php" ><button class="bn632-hover-2 bn25">Accéder à la liste des histoires</button></a>
+
+                <img src="img/constructionMeme.png">
+            </div>
+            <?php
+            $userStatus = logged_admin($BDD); //Request admin(bool)
+            if ($userStatus) {
+                ?>
+
+            <?php } ?>
         </div>
-
-        <div class="contactbutton">
-            <a href="lireunehistoire.php" ><button class="bn632-hover-2 bn25">Accéder à la liste des histoires</button></a>
-
-            <img src="img/constructionMeme.png">
-        </div>
-        <?php
-        $userStatus = logged_admin($BDD); //Request admin(bool)
-        if ($userStatus) {
-            ?>
-
-        <?php } ?>
     </div>
-</div>
 
 <?php }
 

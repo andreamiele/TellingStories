@@ -8,8 +8,8 @@ function secure($user_input)
 }
 if(logged($BDD)) {
 
- if ($_FILES["pp"]["type"] != "")
- {
+    if ($_FILES["pp"]["type"] != "")
+    {
         $image = basename($_FILES['pp']['name']);
         $dossier = '../images/PP/';
         $extensions = array('.png', '.gif', '.jpg', '.jpeg');
@@ -23,21 +23,21 @@ if(logged($BDD)) {
             //deuxieme requete : Création de l'histoire dans la BDD
             $fichier = $_FILES["pp"]['name'];
             if (move_uploaded_file($_FILES["pp"]['tmp_name'], $dossier . $fichier))
-                {
-                    //deuxieme requete : Création de l'histoire dans la BDD
+            {
+                //deuxieme requete : Création de l'histoire dans la BDD
 
-                    $Requete = "UPDATE USERS
+                $Requete = "UPDATE USERS
                                 SET profile_image=:pp
                                 WHERE User_ID=:U_ID";
-                    $response = $BDD->prepare($Requete);
-                    $response->execute(
-                        array(
-                            "pp" => secure($image),
-                            "U_ID" => secure($_SESSION['U_ID'])
-                        ));
-                }
+                $response = $BDD->prepare($Requete);
+                $response->execute(
+                    array(
+                        "pp" => secure($image),
+                        "U_ID" => secure($_SESSION['U_ID'])
+                    ));
             }
         }
+    }
 }
 
 $location = "Location: ../infos_logged.php";

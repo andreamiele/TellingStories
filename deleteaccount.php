@@ -19,5 +19,5 @@ if(logged($BDD))
     $response->execute(array("LOGIN"=>secure($_SESSION['login'])));
 }
 header("Location:logout.php", TRUE, 301);
-    exit();
+exit();
 ?>

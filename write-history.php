@@ -2,7 +2,7 @@
 include("nav.php");
 if(logged($BDD))
 {
-?>
+    ?>
 
     <div class="conteneurpage" data-scroll-section>
         <div class="emballage">
@@ -57,6 +57,6 @@ if(logged($BDD))
 
         </div>
     </div>
-<?php 
+    <?php
 }
 include("footer.php"); ?>

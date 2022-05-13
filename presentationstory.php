@@ -6,17 +6,17 @@
         <?php
         if(logged($BDD))
         {
-            if(isset($_GET['S_ID']))
-            {
+        if(isset($_GET['S_ID']))
+        {
         if (testHistory($BDD,$_GET['S_ID']))
         {
         $_SESSION['id_histoire']= secure($_GET['S_ID']);
-                $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  
+        $Requete="SELECT title, `desc`, picture, tag, S_ID, create_date, auteur,hidden  
                             FROM STORIES 
                             WHERE S_ID =:NUMBERS";
-                $response = $BDD->prepare($Requete);
-                $response->execute(array("NUMBERS"=>secure($_GET['S_ID'])));
-                $readStoryInfo=$response->fetch()
+        $response = $BDD->prepare($Requete);
+        $response->execute(array("NUMBERS"=>secure($_GET['S_ID'])));
+        $readStoryInfo=$response->fetch()
         ?>
         <div class="accueilsection">
 
@@ -76,22 +76,22 @@
         <?php
         $userStatus = logged_admin($BDD); //Request admin(bool)
         if ($userStatus) {
-        ?>
-        <div class="contactbutton">
-            <a href="modifypage.php?S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
-            <a href="modifyparag.php?S_ID=<?=secure($_GET['S_ID'])?>&P_ID=1"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
-            <a href="ajouterParagraph.php"><button class="bn632-hover bn25">Ajouter un paragraphe</button></a>
-            <?php
-            if ($readStoryInfo['hidden']==0){?>
-                <a href="functions/hidden.php?info=0&S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
-            <?php }
-             else{ ?>
-                 <a href="functions/hidden.php?info=1&S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Remettre l'histoire</button></a>
-            <?php }
             ?>
+            <div class="contactbutton">
+                <a href="modifypage.php?S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Modifier l'histoire</button></a>
+                <a href="modifyparag.php?S_ID=<?=secure($_GET['S_ID'])?>&P_ID=1"><button class="bn632-hover bn25">Modifier un paragraphe</button></a>
+                <a href="ajouterParagraph.php"><button class="bn632-hover bn25">Ajouter un paragraphe</button></a>
+                <?php
+                if ($readStoryInfo['hidden']==0){?>
+                    <a href="functions/hidden.php?info=0&S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Cacher l'histoire</button></a>
+                <?php }
+                else{ ?>
+                    <a href="functions/hidden.php?info=1&S_ID=<?=secure($_GET['S_ID'])?>"><button class="bn632-hover bn25">Remettre l'histoire</button></a>
+                <?php }
+                ?>
 
-            <button onclick="document.getElementById('id01').style.display='block'" class="bn632-hover bn25">Supprimer l'histoire</button>
-        </div>
+                <button onclick="document.getElementById('id01').style.display='block'" class="bn632-hover bn25">Supprimer l'histoire</button>
+            </div>
         <?php }
         $_SESSION['nbTrophee']=0;
         $_SESSION['chemin']=array();
@@ -130,7 +130,7 @@
         <a href="read.php?S_ID=<?=secure($_GET['S_ID'])?>&id=0"><button  class="bn632-hover-2 bn19">Lire l'histoire</button></a>
 
 
-           <?php }
+    <?php }
     }else{
         echo("Vous vous êtes perdus <br>");
         echo("<img src='img/no.jpeg'> <br>");
@@ -138,17 +138,17 @@
 
 
     }
-            }else{
-                echo("Vous vous êtes perdus");
-                echo("<div class='contactbutton'> <a href='index.php'><button  class='bn632-hover-2 bn19'>Retourner à l'accueil</button></a></div>");
+    }else{
+        echo("Vous vous êtes perdus");
+        echo("<div class='contactbutton'> <a href='index.php'><button  class='bn632-hover-2 bn19'>Retourner à l'accueil</button></a></div>");
     }
-        }
-        else
-        {
-            echo '<h1>You must create an account to read our stories ;)</h1> </br> <h2>Redirection ...</h2>';
-            echo '<div class="contactbutton"><a href="login.php"><button  class="bn632-hover-2 bn19">Se connecter</button></a></div>';
-        }
-        ?>
+    }
+    else
+    {
+        echo '<h1>You must create an account to read our stories ;)</h1> </br> <h2>Redirection ...</h2>';
+        echo '<div class="contactbutton"><a href="login.php"><button  class="bn632-hover-2 bn19">Se connecter</button></a></div>';
+    }
+    ?>
 </div>
 
 <!-- Mettre la valeur prévue dans le paragraphe en paramètre de la fonction-->
