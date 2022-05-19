@@ -56,8 +56,8 @@ function logged_admin($BDD)
     return false;
 }
 try {
-    $BDD = new PDO( "mysql:host=localhost;dbname=amiele;charset=utf8",
-        "amiele","franchementosef", array(PDO::ATTR_ERRMODE
+    $BDD = new PDO( "mysql:host=91.216.107.164;dbname=andre1787219;charset=utf8",
+        "andre1787219","vE8!18Td!uYY1E7", array(PDO::ATTR_ERRMODE
         =>PDO::ERRMODE_EXCEPTION));
 } /*POUR ZZZ */
 
